@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>LOJA NEOPODER.SHOP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topo">
+  <img src="assets/logo.png" class="logo">
+  <nav>
+    <a>Início</a>
+    <a>Produtos</a>
+    <a>Contato</a>
+  </nav>
+</header>
+
+<section class="hero" id="hero"></section>
+
+<section class="produtos">
+  <h2>Destaques</h2>
+  <div id="grid-produtos"></div>
+</section>
+
+<section class="carrinho">
+  <h2>Seu Pedido</h2>
+  <div id="carrinho"></div>
+  <button onclick="finalizar()">Finalizar pedido</button>
+</section>
+
+<a class="whats" onclick="finalizar()">Contato</a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
