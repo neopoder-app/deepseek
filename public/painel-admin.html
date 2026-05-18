@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Admin | NEOPODER.SHOP</title>
+    <style>
+        :root { --azul: #2eb4ff; --dark: #0f1012; --card: #1a1b1e; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--dark); color: #fff; padding: 40px; }
+        .panel { max-width: 900px; margin: auto; background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid #333; }
+        .logo-admin { height: 45px; margin-bottom: 25px; display: block; }
+        h1 { font-size: 22px; color: var(--azul); margin-bottom: 5px; }
+        .section-title { margin-top: 30px; border-bottom: 1px solid #333; padding-bottom: 10px; color: #888; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
+        .input-group { margin: 15px 0; }
+        input { width: 100%; padding: 12px; background: #000; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; }
+        button { background: var(--azul); color: #000; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
+        button:hover { opacity: 0.8; transform: translateY(-2px); }
+        .grid-banners { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="panel">
+        <img src="NEOPODER.SHOP.png" alt="NEOPODER.SHOP" class="logo-admin">
+        <h1>GESTOR DE CATÁLOGO V3.0</h1>
+        <p style="color: #666; font-size: 14px;">Backstage | Tailandesas 1.1</p>
+
+        <div class="section-title">Design & Banners</div>
+        <div class="grid-banners">
+            <div class="input-group">
+                <label>Banner 01 (URL)</label>
+                <input type="text" id="b1-url" placeholder="Link da imagem do banner 1">
+            </div>
+            <div class="input-group">
+                <label>Banner 02 (URL)</label>
+                <input type="text" id="b2-url" placeholder="Link da imagem do banner 2">
+            </div>
+        </div>
+        <button onclick="salvarDesign()">PUBLICAR ALTERAÇÕES DE DESIGN</button>
+
+        <div class="section-title">Cadastro de Produtos (Manual/Extração)</div>
+        <div class="input-group">
+            <input type="text" id="p-nome" placeholder="Nome do Produto (Ex: Brasil Jogador 2026)">
+            <input type="number" id="p-base" placeholder="Preço Base Fornecedor (VF BASE)">
+            <input type="text" id="p-img" placeholder="Link da Imagem Real do Produto">
+        </div>
+        <button onclick="addProduto()" style="background: #fff;">CADASTRAR PRODUTO NA VITRINE</button>
+    </div>
+
+    <script>
+        // Salva links de banners e logo
+        function salvarDesign() {
+            const cfg = {
+                banner1: document.getElementById('b1-url').value,
+                banner2: document.getElementById('b2-url').value
+            };
+            localStorage.setItem('neopoder_design', JSON.stringify(cfg));
+            alert("Design da vitrine atualizado com sucesso!");
+        }
+
+        // Adiciona produto com cálculo de margem automático
+        function addProduto() {
+            const nome = document.getElementById('p-nome').value;
+            const vfBase = parseFloat(document.getElementById('p-base').value);
+            const img = document.getElementById('p-img').value;
+
+            if(!nome || !vfBase) return alert("Por favor, preencha o nome e o preço base.");
+
+            let produtos = JSON.parse(localStorage.getItem('neopoder_v6')) || [];
+            produtos.push({ 
+                id: Date.now(), 
+                nome: nome, 
+                vfBase: vfBase, 
+                img: img 
+            });
+
+            localStorage.setItem('neopoder_v6', JSON.stringify(produtos));
+            alert("Produto cadastrado! Ele já está visível na sua index.html");
+            
+            // Limpa campos
+            document.getElementById('p-nome').value = "";
+            document.getElementById('p-base').value = "";
+            document.getElementById('p-img').value = "";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Controle - NEOPODER ATACADO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen">
+
+    <header class="bg-emerald-800 border-b-4 border-yellow-400 p-4 shadow-xl flex justify-between items-center">
+        <div>
+            <h1 class="text-xl font-black text-yellow-300 tracking-wider">🔰 NEOPODER.SHOP</h1>
+            <p class="text-xs text-emerald-200">Painel Administrativo Hub - Copa 2026</p>
+        </div>
+        <button onclick="sincronizar()" class="bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-black px-4 py-2 rounded shadow transition text-sm">⚡ Escanear Fornecedor</button>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <div class="space-y-6">
+            <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-md">
+                <h2 class="text-md font-bold text-yellow-400 mb-3 flex justify-between items-center">
+                    📊 Margens por Faixa Atacado
+                    <button onclick="adicionarFaixa()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-2 py-1 rounded">+ Inserir</button>
+                </h2>
+                <div id="listaFaixas" class="space-y-2 max-h-80 overflow-y-auto pr-1"></div>
+                <button onclick="salvarConfig()" class="w-full mt-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded text-sm transition">Gravar Tabela Dinâmica</button>
+            </div>
+
+            <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-md">
+                <h2 class="text-md font-bold text-yellow-400 mb-3">🖼️ Banners Rotativos da Vitrine</h2>
+                <div id="listaBanners" class="space-y-2 mb-3"></div>
+                <button onclick="adicionarBanner()" class="w-full bg-gray-700 hover:bg-gray-600 text-xs py-2 rounded text-gray-300 transition">+ Adicionar Nova URL de Banner</button>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2 bg-gray-800 p-5 rounded-xl border border-gray-700 shadow-md">
+            <h2 class="text-md font-bold text-yellow-400 mb-4 flex items-center gap-2">📦 Módulos Carregados & Estoque</h2>
+            <div id="gridProdutos" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+
+    </main>
+
+    <script>
+        let configGlobal = {};
+
+        async function obterDados() {
+            const rConf = await fetch('/api/config');
+            configGlobal = await rConf.json();
+            renderizarConfig();
+
+            const rProd = await fetch('/api/produtos');
+            const produtos = await rProd.json();
+            renderizarProdutos(produtos);
+        }
+
+        function renderizarConfig() {
+            const container = document.getElementById('listaFaixas');
+            container.innerHTML = '';
+            configGlobal.faixas.sort((a,b)=>a.qtdMin-b.qtdMin).forEach((f, idx) => {
+                container.innerHTML += `
+                    <div class="flex items-center gap-2 bg-gray-700/50 p-2 rounded border border-gray-600 text-xs">
+                        <span class="w-14 text-gray-400">Qtd Mín:</span>
+                        <input type="number" value="${f.qtdMin}" onchange="configGlobal.faixas[${idx}].qtdMin = parseFloat(this.value)" class="w-14 p-1 bg-gray-800 border border-gray-600 rounded text-center font-bold text-white">
+                        <span class="text-gray-400">➔ Lucro R$:</span>
+                        <input type="number" value="${f.margem}" onchange="configGlobal.faixas[${idx}].margem = parseFloat(this.value)" class="w-20 p-1 bg-gray-800 border border-gray-600 rounded text-center font-bold text-green-400">
+                        <button onclick="configGlobal.faixas.splice(${idx},1); renderizarConfig();" class="text-red-400 font-bold ml-auto px-1 hover:text-red-500">✕</button>
+                    </div>
+                `;
+            });
+
+            const containerBanners = document.getElementById('listaBanners');
+            containerBanners.innerHTML = '';
+            configGlobal.banners.forEach((b, idx) => {
+                containerBanners.innerHTML += `
+                    <div class="flex gap-1 items-center">
+                        <input type="text" value="${b}" onchange="configGlobal.banners[${idx}] = this.value" class="flex-1 p-1 bg-gray-700 text-xs border border-gray-600 rounded truncate text-gray-200">
+                        <button onclick="configGlobal.banners.splice(${idx},1); renderizarConfig();" class="text-red-400 text-xs px-1 hover:text-red-500">Remover</button>
+                    </div>
+                `;
+            });
+        }
+
+        function adicionarFaixa() { configGlobal.faixas.push({ qtdMin: 1, margem: 10 }); renderizarConfig(); }
+        function adicionarBanner() { configGlobal.banners.push(""); renderizarConfig(); }
+
+        async function salvarConfig() {
+            await fetch('/api/config', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(configGlobal) });
+            alert("Estrutura e mídias salvas com sucesso!");
+            obterDados();
+        }
+
+        function renderizarProdutos(produtos) {
+            const grid = document.getElementById('gridProdutos');
+            grid.innerHTML = '';
+            produtos.forEach(p => {
+                const indicadorEstoque = p.esgotado 
+                    ? '<span class="bg-red-900/50 text-red-400 border border-red-700 text-[10px] px-2 py-0.5 rounded font-black">🚨 FORNECEDOR INDISPONÍVEL</span>'
+                    : '<span class="bg-emerald-900/50 text-emerald-400 border border-emerald-700 text-[10px] px-2 py-0.5 rounded font-black">📦 MONITORADO / ATIVO</span>';
+                
+                grid.innerHTML += `
+                    <div class="bg-gray-700/30 border border-gray-600 rounded-lg p-3 flex gap-3 shadow relative">
+                        <img src="${p.img}" class="w-16 h-20 object-cover rounded bg-gray-800 border border-gray-600">
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xs font-bold text-white line-clamp-2 leading-tight">${p.nome}</h3>
+                                <div class="mt-1">${indicadorEstoque}</div>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-gray-700">
+                                <label class="block text-[9px] uppercase font-bold text-yellow-400 mb-1">Preço Fixo Exclusivo (R$):</label>
+                                <div class="flex gap-1">
+                                    <input type="number" id="manual-${btoa(p.nome)}" value="${p.precoManual || ''}" placeholder="Base Atacado Dinâmico" class="w-full px-2 py-1 bg-gray-800 text-xs border border-gray-600 rounded font-bold text-yellow-300">
+                                    <button onclick="definirPrecoFixo('${p.nome}')" class="bg-emerald-600 text-white px-2 rounded text-xs hover:bg-emerald-500">✓</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        async function definirPrecoFixo(nome) {
+            const val = document.getElementById(`manual-${btoa(nome)}`).value;
+            await fetch('/api/produtos/editar', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ nome: nome, precoManual: val || null })
+            });
+            alert('Preço fixado manualmente!');
+            obterDados();
+        }
+
+        async function sincronizar() {
+            alert('Comando enviado! O robô vai inicializar a varredura na Goat Atacado Esportivo.');
+            await fetch('/api/sincronizar', { method: 'POST' });
+        }
+
+        obterDados();
+    </script>
+</body>
+</html>

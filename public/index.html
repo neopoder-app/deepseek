@@ -1,39 +1,220 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>LOJA NEOPODER.SHOP</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEOPODER.SHOP | Catálogo Premium Atacado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #0b0c10; color: #e5e7eb; }
+        .goat-dark { background: linear-gradient(135deg, #11141c 0%, #171d2a 100%); }
+        .text-gold { color: #f5b041; }
+        .bg-gold { background-color: #f5b041; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
+<body class="max-w-6xl mx-auto min-h-screen flex flex-col pb-16 antialiased px-2 sm:px-4">
 
-<body>
+    <header class="goat-dark border-b border-yellow-500/30 p-4 mt-2 rounded-2xl sticky top-2 z-50 shadow-2xl backdrop-blur-md bg-opacity-95">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gold flex items-center justify-center font-black text-black text-lg shadow-md">NP</div>
+                <div>
+                    <h1 class="text-lg font-black tracking-tight text-white">NEOPODER<span class="text-gold">.SHOP</span></h1>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Distribuição e Importação Esportiva</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                <span class="text-[10px] uppercase font-black px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Sistema Online
+                </span>
+                <button onclick="alternarAdmin()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-bold px-3 py-1.5 rounded-lg border border-gray-700 transition">
+                    ⚙️ Painel
+                </button>
+            </div>
+        </div>
+    </header>
 
-<header class="topo">
-  <img src="assets/logo.png" class="logo">
-  <nav>
-    <a>Início</a>
-    <a>Produtos</a>
-    <a>Contato</a>
-  </nav>
-</header>
+    <nav class="my-4 p-2 bg-[#11141c]/50 rounded-xl border border-gray-800/80 overflow-hidden">
+        <div id="abasCategorias" class="flex gap-2 overflow-x-auto no-scrollbar py-1 px-1">
+            <button onclick="filtrarCategoria('TODOS')" class="px-4 py-2 rounded-lg text-xs font-black uppercase transition whitespace-nowrap bg-gold text-black">✨ Todos Itens</button>
+        </div>
+    </nav>
 
-<section class="hero" id="hero"></section>
+    <main class="flex-1">
+        <div id="gridProdutos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            </div>
+    </main>
 
-<section class="produtos">
-  <h2>Destaques</h2>
-  <div id="grid-produtos"></div>
-</section>
+    <section id="painelAdmin" class="hidden fixed bottom-0 left-0 right-0 max-w-6xl mx-auto bg-[#11141c] border-t-2 border-yellow-500 p-4 z-50 rounded-t-2xl shadow-2xl max-h-[400px] overflow-y-auto">
+        <div class="flex justify-between items-center mb-4 border-b border-gray-800 pb-2">
+            <h3 class="text-xs font-black uppercase text-gold">⚙️ Configurações Manuais de Custos</h3>
+            <button onclick="alternarAdmin()" class="text-[11px] font-bold px-2 py-1 bg-red-600 text-white rounded">Fechar</button>
+        </div>
+        <div id="tabelaAdmin" class="space-y-2"></div>
+    </section>
 
-<section class="carrinho">
-  <h2>Seu Pedido</h2>
-  <div id="carrinho"></div>
-  <button onclick="finalizar()">Finalizar pedido</button>
-</section>
+    <script>
+        let dadosGlobais = { produtos: [], config: {} };
+        let categoriaAtual = 'TODOS';
 
-<a class="whats" onclick="finalizar()">Contato</a>
+        async function inicializarApp() {
+            try {
+                // Tenta buscar da API local (Ambiente Backend)
+                const res = await fetch('/api/dados');
+                const json = await res.json();
+                dadosGlobais.produtos = json.produtos;
+                dadosGlobais.config = json.config;
+            } catch (e) {
+                // Fallback automático para o GitHub Pages (Ambiente Estático)
+                const rProd = await fetch('./banco_produtos.json');
+                const rConf = await fetch('./config_atacado.json');
+                dadosGlobais.produtos = await rProd.json();
+                dadosGlobais.config = await rConf.json();
+            }
+            executarRenderizacao();
+        }
 
-<script src="config.js"></script>
-<script src="app.js"></script>
+        function executarRenderizacao() {
+            renderizarMenuCategorias();
+            renderizarProdutosVitrine();
+            renderizarLinhasAdmin();
+        }
 
+        function renderizarMenuCategorias() {
+            const container = document.getElementById('abasCategorias');
+            const categorias = [...new Set(dadosGlobais.produtos.map(p => p.categoria))].filter(Boolean);
+            
+            let html = `<button onclick="filtrarCategoria('TODOS')" class="px-4 py-2 rounded-lg text-xs font-black uppercase transition whitespace-nowrap ${categoriaAtual === 'TODOS' ? 'bg-gold text-black' : 'bg-gray-800 text-gray-400'}">✨ Todos Itens</button>`;
+            
+            categorias.forEach(cat => {
+                const isSelected = categoriaAtual === cat;
+                html += `
+                    <button onclick="filtrarCategoria('${cat}')" class="px-4 py-2 rounded-lg text-xs font-black uppercase transition whitespace-nowrap ${isSelected ? 'bg-gold text-black' : 'bg-gray-800 text-gray-400'}">
+                        👕 ${cat}
+                    </button>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function filtrarCategoria(cat) {
+            categoriaAtual = cat;
+            renderizarMenuCategorias();
+            renderizarProdutosVitrine();
+        }
+
+        function renderizarProdutosVitrine() {
+            const grid = document.getElementById('gridProdutos');
+            grid.innerHTML = '';
+
+            const filtrados = dadosGlobais.produtos.filter(p => (categoriaAtual === 'TODOS' || p.categoria === categoriaAtual) && p.status !== 'oculto');
+
+            if (filtrados.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-xs font-bold text-gray-500">Nenhum item localizado para exibição.</div>`;
+                return;
+            }
+
+            filtrados.forEach(p => {
+                let faixasHTML = '';
+                if(dadosGlobais.config.lucro && dadosGlobais.config.lucro.faixas) {
+                    dadosGlobais.config.lucro.faixas.forEach(f => {
+                        const precoFinal = p.custo + f.margemFixa;
+                        faixasHTML += `
+                            <div class="flex justify-between items-center text-[11px] border-b border-gray-800/60 py-1 px-0.5">
+                                <span class="text-gray-400 font-medium">${f.nome}</span>
+                                <span class="font-black text-emerald-400">R$ ${precoFinal.toFixed(2)}</span>
+                            </div>
+                        `;
+                    });
+                }
+
+                const linkWhats = `https://wa.me/${dadosGlobais.config.whatsappAdmin}?text=Olá! Quero comprar o lote do produto: *${encodeURIComponent(p.nome)}*`;
+
+                grid.innerHTML += `
+                    <div class="bg-[#11141c] rounded-2xl border border-gray-800/80 overflow-hidden p-3 flex flex-col justify-between shadow-lg hover:border-yellow-500/20 transition-all">
+                        <div>
+                            <div class="relative w-full h-64 bg-[#171d2a] rounded-xl overflow-hidden mb-3 border border-gray-800/50">
+                                <img src="${p.img}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x500?text=Sem+Foto'">
+                                ${p.esgotado ? `<div class="absolute inset-0 bg-black/70 flex items-center justify-center font-black text-xs text-red-500">Sem Estoque</div>` : ''}
+                                <span class="absolute top-2 left-2 text-[8px] font-bold bg-black/60 text-gold px-2 py-0.5 rounded border border-yellow-500/20 uppercase">${p.categoria}</span>
+                            </div>
+                            <h3 class="text-xs font-bold text-gray-200 line-clamp-2 leading-tight mb-2 min-h-[32px]">${p.nome}</h3>
+                            
+                            <div class="bg-[#171d2a] p-2 rounded-xl border border-gray-800 space-y-1">
+                                <span class="block text-[8px] font-black text-gold uppercase tracking-wider mb-1">📋 Preços e Escalas de Compra:</span>
+                                ${faixasHTML}
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="flex gap-1 overflow-x-auto no-scrollbar mb-3">
+                                ${p.tamanhos.map(t => `<span class="px-2 py-0.5 text-[9px] font-bold bg-[#171d2a] border border-gray-800 rounded text-gray-400">${t}</span>`).join('')}
+                            </div>
+                            <a href="${linkWhats}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-black font-black text-xs py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition text-white decoration-none">
+                                💬 Encomendar Atacado
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function alternarAdmin() {
+            document.getElementById('painelAdmin').classList.toggle('hidden');
+        }
+
+        function renderizarLinhasAdmin() {
+            const container = document.getElementById('tabelaAdmin');
+            container.innerHTML = '';
+
+            dadosGlobais.produtos.forEach(p => {
+                container.innerHTML += `
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-[#171d2a] p-2 rounded-lg border border-gray-800 text-[11px] gap-2">
+                        <span class="font-bold text-gray-300 truncate w-full sm:w-72">${p.nome}</span>
+                        <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                            <input id="input-${p.id}" type="number" step="0.01" value="${p.custo}" class="w-20 bg-[#11141c] border border-gray-700 text-center text-white py-1 rounded font-bold">
+                            <select id="select-${p.id}" class="bg-[#11141c] border border-gray-700 text-white py-1 rounded px-1">
+                                <option value="aprovado" ${p.status === 'aprovado' ? 'selected' : ''}>Mostrar</option>
+                                <option value="oculto" ${p.status === 'oculto' ? 'selected' : ''}>Ocultar</option>
+                            </select>
+                            <button onclick="salvarAlteracao('${p.id}')" class="bg-blue-600 text-white font-bold px-3 py-1 rounded hover:bg-blue-500">Salvar</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        async function salvarAlteracao(id) {
+            const novoPreco = document.getElementById(`input-${id}`).value;
+            const status = document.getElementById(`select-${id}`).value;
+
+            try {
+                const res = await fetch('/api/ajuste-manual', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id, novoPreco, status })
+                });
+                if(res.ok) {
+                    alert('Sincronizado e salvo com sucesso!');
+                    inicializarApp();
+                }
+            } catch(e) {
+                // Modo offline / GitHub Pages (Apenas alteração de memória em tela)
+                const idx = dadosGlobais.produtos.findIndex(p => p.id === id);
+                if(idx !== -1) {
+                    dadosGlobais.produtos[idx].custo = parseFloat(novoPreco);
+                    dadosGlobais.produtos[idx].status = status;
+                    executarRenderizacao();
+                    alert('Alteração aplicada localmente na visualização.');
+                }
+            }
+        }
+
+        window.onload = inicializarApp;
+    </script>
 </body>
 </html>
