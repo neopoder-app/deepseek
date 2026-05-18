@@ -1,0 +1,29 @@
+[
+  {
+    "nome": "Camisa Seleção Brasil I Copa do Mundo 2026 Amarelo Masculina",
+    "img": "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=500&q=80",
+    "custo": 60,
+    "esgotado": false,
+    "tamanhos": [
+      "P",
+      "M",
+      "G",
+      "GG",
+      "2XL",
+      "3XL",
+      "4XL"
+    ],
+    "precosAtacado": {
+      "faixa_1": 105,
+      "faixa_3": 95,
+      "faixa_6": 90,
+      "faixa_10": 85,
+      "faixa_20": 82,
+      "faixa_30": 80,
+      "faixa_50": 78,
+      "faixa_100": 75,
+      "faixa_300": 70
+    },
+    "precoManual": null
+  }
+]

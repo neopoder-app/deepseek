@@ -1,0 +1,35 @@
+{
+  "whatsappAdmin": "5511915184857",
+  "faixas": [
+    {
+      "id": "drop",
+      "nome": "Drop",
+      "margemFixa": 31
+    },
+    {
+      "id": "at_3",
+      "nome": "Atacado 3 pçs",
+      "margemFixa": 17
+    },
+    {
+      "id": "at_10",
+      "nome": "Atacado 10 pçs",
+      "margemFixa": 14
+    },
+    {
+      "id": "at_20",
+      "nome": "Atacado 20 pçs",
+      "margemFixa": 12
+    },
+    {
+      "id": "at_50",
+      "nome": "Atacado 50 pçs",
+      "margemFixa": 9
+    },
+    {
+      "id": "at_100",
+      "nome": "Atacado 100 pçs",
+      "margemFixa": 6
+    }
+  ]
+}
