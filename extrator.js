@@ -3,9 +3,11 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import { exec } from 'child_process'; // <-- ADICIONE ESTA LINHA AQUI
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+// ... resto do código
 
 const browser = await puppeteer.launch({
     args: [
@@ -252,9 +254,10 @@ app.post('/api/varrer', (req, res) => {
     res.json({ success: true, message: "Varredura iniciada em segundo plano!" });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`===========================================================`);
     console.log(`⚡ API ENDPOINTS DO CATÁLOGO ATIVOS NA PORTA DE REDE: ${PORT}`);
     console.log(`===========================================================`);
-    executarVarreduraResiliente();
+    console.log(`🤖 O Robô está em repouso. Inicie a varredura pela rota /api/varrer quando quiser.`);
+    // A função executarVarreduraResiliente() foi removida daqui para não travar a memória!
 });
