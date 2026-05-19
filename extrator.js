@@ -1,10 +1,12 @@
-const express = require('express');
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-const path = require('path');
-const { exec } = require('child_process');
+const browser = await puppeteer.launch({
+    args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage' // Ajuda a não estourar a memória do plano gratuito
+    ]
+});
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const BANCO_PATH = path.join(__dirname, 'banco_produtos.json');
 const CONFIG_PATH = path.join(__dirname, 'config_atacado.json');
 
