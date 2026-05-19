@@ -23,7 +23,16 @@ const CONFIG_PATH = path.join(__dirname, 'config_atacado.json');
 
 const app = express();
 app.use(express.json());
-app.use(express.static(__dirname));
+// Forçar a entrega dos arquivos HTML lendo a pasta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/painel-admin.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'painel-admin.html'));
+});
 
 // Permitir requisições de páginas locais ou domínios externos (CORS)
 app.use((req, res, next) => {
