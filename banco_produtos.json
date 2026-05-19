@@ -25,5 +25,1877 @@
       "faixa_300": 70
     },
     "precoManual": null
+  },
+  {
+    "id": "Q0FNSVNBUyBE",
+    "nome": "CAMISAS DE TIME",
+    "img": "https://via.placeholder.com/400x500?text=Imagem+Nuvem",
+    "custo": 40,
+    "precosAtacado": {
+      "drop": 75,
+      "at_3": 60,
+      "at_10": 56,
+      "at_20": 53,
+      "at_50": 50
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UFJPTU/Dh8OD",
+    "nome": "PROMOÇÃO",
+    "img": "https://via.placeholder.com/400x500?text=Imagem+Nuvem",
+    "custo": 40,
+    "precosAtacado": {
+      "drop": 75,
+      "at_3": 60,
+      "at_10": 56,
+      "at_20": 53,
+      "at_50": 50
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q09QQSBETyBN",
+    "nome": "COPA DO MUNDO 2026",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/portugal-torcedor/design-sem-nome-2026-02-06t141555-compressed.jpg",
+    "custo": 90,
+    "precosAtacado": {
+      "drop": 125,
+      "at_3": 110,
+      "at_10": 106,
+      "at_20": 103,
+      "at_50": 100
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFBv",
+    "nome": "Camisa Portugal Home I 26/27 – Vermelha – Torcedor...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/portugal-torcedor/design-sem-nome-2026-02-06t141555-compressed.jpg",
+    "custo": 83,
+    "precosAtacado": {
+      "drop": 118,
+      "at_3": 103,
+      "at_10": 99,
+      "at_20": 96,
+      "at_50": 93
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEl0",
+    "nome": "Camisa Itália Home I - Copa do Mundo 2026 - Azul -...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tbehr/argentina/bcxxx/fy5ee/verde/design-sem-nome-19-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFNl",
+    "nome": "Camisa Seleção Brasil Away II - Copa do Mundo 2026...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/feminina/e11ddeb9-59c6-473d-96e6-19f1b4f0d4af-compressed.jpg",
+    "custo": 90,
+    "precosAtacado": {
+      "drop": 125,
+      "at_3": 110,
+      "at_10": 106,
+      "at_20": 103,
+      "at_50": 100
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KFPDjU1CT0xP",
+    "nome": "(SÍMBOLO CLARO) Camisa Seleção Brasil I Copa do Mu...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/brasil-amarelo/62c4fdcd-1b5b-4bec-9a53-6912758022b7-compressed.jpg",
+    "custo": 120,
+    "precosAtacado": {
+      "drop": 155,
+      "at_3": 140,
+      "at_10": 136,
+      "at_20": 133,
+      "at_50": 130
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "VGVtcG9yYWRh",
+    "nome": "Temporada 25/26 - LANÇAMENTOS",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/3251/cfdb/design-sem-nome-2026-03-04t160219-compressed.jpg",
+    "custo": 78.004,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFNv",
+    "nome": "Camisa Soberano FC Away II 25/26 – Preta e Vermelh...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/3251/cfdb/design-sem-nome-2026-03-04t160219-compressed.jpg",
+    "custo": 68.005,
+    "precosAtacado": {
+      "drop": 103,
+      "at_3": 88,
+      "at_10": 84,
+      "at_20": 81,
+      "at_50": 78
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFNh",
+    "nome": "Camisa Santos Third III 25/26 – Azul – Edição Espe...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/psg-preta/azuc/bota-society/blue/lilas-e-verde/cinza-verde/rosa-e-azul/verde-e-branco/3210/poiuy/defeyip45/tgg45/53258/lilas/gfn/98hgbn/24516/0203/8541/3619/bhy7/efwt/2034/03366/dfr/design-sem-nome-2026-03-02t161420-compressed.jpg",
+    "custo": 86.0076,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEF0",
+    "nome": "Camisa Atlético Mineiro All Black 2025 – Preta – T...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/chuteira/7896/cam/design-sem-nome-2026-02-12t122838-compressed.jpg",
+    "custo": 78.006,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEZs",
+    "nome": "Camisa Flamengo Third 25/26 - Patrocínios - Bege (...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/soberano-preta/flamengo-patch/design-sem-nome-2026-02-10t104156-compressed.jpg",
+    "custo": 40.003,
+    "precosAtacado": {
+      "drop": 75,
+      "at_3": 60,
+      "at_10": 56,
+      "at_20": 53,
+      "at_50": 50
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEJh",
+    "nome": "Camisa Barcelona Total 90 - 25/26 - Laranja - Torc...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/short-conjunto-separado/camisa-2026/flamengo-vermelha/hernandez-14/porto-90-93/chelsea-total-90/barcelona-total-90/design-sem-nome-2026-01-19t102610-compressed.jpg",
+    "custo": 78.0068,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIENo",
+    "nome": "Camisa Chelsea Total 90 - 25/26 - Preta - Torcedor...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/short-conjunto-separado/camisa-2026/flamengo-vermelha/hernandez-14/porto-90-93/chelsea-total-90/design-sem-nome-2026-01-19t100018-compressed.jpg",
+    "custo": 86.0076,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIElu",
+    "nome": "Camisa Internacional Third III 25/26 - Torcedor Ma...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/short-conjunto-separado/camisa-2026/flamengo-vermelha/hernandez-14/palmeiras-amarela/design-sem-nome-2026-01-19t091009-compressed.jpg",
+    "custo": 78.004,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFBh",
+    "nome": "Camisa Palmeiras Third III 25/26 - Torcedor Mascul...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/short-conjunto-separado/camisa-2026/flamengo-vermelha/hernandez-14/palmeiras-amarela/big8-9b4055a7115ec8c70b17610740886882-1024-1024-editado-compressed.jpg",
+    "custo": 40,
+    "precosAtacado": {
+      "drop": 75,
+      "at_3": 60,
+      "at_10": 56,
+      "at_20": 53,
+      "at_50": 50
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEJv",
+    "nome": "Camisa Botafogo Away II 25/26 - Preta - Torcedor M...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/short-conjunto-separado/camisa-2026/liverpool-listrada/design-sem-nome-2026-01-14t145904139.png",
+    "custo": 78.003,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFRv",
+    "nome": "Camisa Tottenham Total 90 - 25/26 - Amarela - Torc...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/short-conjunto-separado/camisa-2026/flamengo-vermelha/hernandez-14/porto-90-93/chelsea-total-90/barcelona-total-90/tottenham-amarelo-2025/design-sem-nome-2026-01-19t111313-compressed.jpg",
+    "custo": 78.004,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIExp",
+    "nome": "Camisa Liverpool Lifestyle I 25/26 - Torcedor Masc...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/short-conjunto-separado/camisa-2026/liverpool-listrada/design-sem-nome-2026-01-14t135630-compressed.jpg",
+    "custo": 78.006,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KFNpbGthZG8p",
+    "nome": "(Silkado) Camisa Tottenham Home I 25/26 - Branca -...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/zzzzz232001/barca-2016/tottenham-torcedor-silkado/design-sem-nome-2025-11-22t112411-compressed.jpg",
+    "custo": 78.006,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFJv",
+    "nome": "Camisa Roma Away III 25/26 - Branca - Torcedor Mas...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/z1corintihians-retro/fluminense-adulto/napoli/santos-infantil/holanda-laranja/pirlo-21/santos-jogador/inter-milao-patro-azul/santos-infantil/mu-manga-longa/brasil/liverpool/brasil-1998/barcelona-manga-longa/psg-manga-longa/mc-camisa-preta/lyon/psg-beisebol/liverpool-vermelha-torcedor/roma-branca/design-sem-nome-2025-11-17t124817805.png",
+    "custo": 78.007,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KE1BTkNIQURB",
+    "nome": "(MANCHADA) Camisa Liverpool Home I 25/26 - Vermelh...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/psg-preta/azuc/bota-society/blue/lilas-e-verde/cinza-verde/rosa-e-azul/verde-e-branco/3210/poiuy/defeyip45/tgg45/53258/lilas/gfn/98hgbn/24516/0203/8541/3619/bhy7/design-sem-nome-2026-02-27t121053-compressed.jpg",
+    "custo": 60,
+    "precosAtacado": {
+      "drop": 95,
+      "at_3": 80,
+      "at_10": 76,
+      "at_20": 73,
+      "at_50": 70
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFBT",
+    "nome": "Camisa PSG Beisebol 25/26 - Branca - Torcedor Masc...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/z1corintihians-retro/fluminense-adulto/napoli/santos-infantil/holanda-laranja/pirlo-21/santos-jogador/inter-milao-patro-azul/santos-infantil/mu-manga-longa/brasil/liverpool/brasil-1998/barcelona-manga-longa/psg-manga-longa/mc-camisa-preta/lyon/psg-beisebol/design-sem-nome-2025-11-17t120637734.png",
+    "custo": 83,
+    "precosAtacado": {
+      "drop": 118,
+      "at_3": 103,
+      "at_10": 99,
+      "at_20": 96,
+      "at_50": 93
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEFs",
+    "nome": "Camisa Al-Nassr Third III 25/26 - Torcedor Masculi...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/1307/zzzze343/inter-milao-torcedor-2025/vasco-2526/botinha-vini-jr/campo-branca-e-azul/vermelha-e-branca/preto/dourada-e-preta/preto/laranja/eioeri/reer/verde/rosa-e-preto/flamengo-viagem/arsenal/juventus-viagem/real-madrid/franca/9845/manga-longa-city/milan-jogador/htrtr/liverpool-preta/flumi/design-sem-nome-91.png",
+    "custo": 86.007,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KEJPUkRBRE8p",
+    "nome": "(BORDADO) Camisa Napoli Away II 25/26 - Torcedor M...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/guuivach/palmeiras-branca/kjbkj/xbxfs/fdfdf/hygfdr/vbbncv/fc-xd/design-sem-nome-73-compressed.jpg",
+    "custo": 78.0068,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEhv",
+    "nome": "Camisa Holanda Home I 25/26 - Laranja - Torcedor M...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/z1corintihians-retro/fluminense-adulto/napoli/santos-infantil/holanda-laranja/design-sem-nome-2025-11-10t100231-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEFq",
+    "nome": "Camisa Ajax Away II 24/25 - Torcedor Masculina - 6...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w-24/camisa/ajax/27ab9a28-06af-4c0c-b9d6-b623bb643b24.jpg",
+    "custo": 78.004,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIGRv",
+    "nome": "Camisa do Bahia Tricolor (Edição Especial Votação)...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisas/bahia/bf37c42d-1783-4290-af6c-0a39e2b0d8d3.jpg",
+    "custo": 78.005,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIENv",
+    "nome": "Camisa Coutinho 11 Vasco da Gama com patrocínio 24...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisas/coutinho-11/66c3faef-9905-427d-be36-798ea648c54e-448a5d8408c160ce8b17211782824523-1024-1024-compressed.jpg",
+    "custo": 78.007,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEZy",
+    "nome": "Camisa França Away II 24/25 Jogador Masculina - 2...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/24-25/franca-home-24-25/away/jogador/4d9e26fe-7eef-4824-811f-b2bf83753e82.jpg",
+    "custo": 78.005,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KEJSSUxIT1NB",
+    "nome": "(BRILHOSA) Camisa Flamengo Lifestyler 24/25 Torced...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w31-defeito/maio-junho/56323/gttere/flamengo-brilhosa/bca2851a-6d97-4646-bafb-0b478ac595dc.jpg",
+    "custo": 100,
+    "precosAtacado": {
+      "drop": 135,
+      "at_3": 120,
+      "at_10": 116,
+      "at_20": 113,
+      "at_50": 110
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEFD",
+    "nome": "Camisa AC Milan Edição Especial 24/25 - Verde - Jo...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/pcs-novas/25-verde-jogador-masculina/5cf82b7d-3ee5-45ea-a0b8-724bcaad9865-compressed.jpg",
+    "custo": 86.007,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIGZl",
+    "nome": "Camisa feminina AWAY II Inter Miami 2024 - 956230",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/kids/miami-preta-fem/708a9422-d98c-49ef-aa61-6a83c931e0eb.jpg",
+    "custo": 78.004,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Modelos Femininos",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UmVnYXRhIEZs",
+    "nome": "Regata Flamengo Third III 24/25 - Cinza - Torcedo...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w26/flamengo-cinza-regata/0b873ef6-41cb-4c28-ab83-c0604a6ae06a-compressed.jpg",
+    "custo": 78.006,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "QXRsw6l0aWNv",
+    "nome": "Atlético Madrid Home I 24/25 Torcedor Masculino - ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/defeitos/palme/novidades-junho/camisa-atletico-de-madrid-24-25/f904600d-9c26-4143-a102-039803c85095-compressed.jpg",
+    "custo": 78.004,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhICJT",
+    "nome": "Camisa \"Soberano\" Home I 24/25 - Torcedor Masculin...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w29/spfc/543r/popiouy/c59727e8-017e-4350-a361-8cc288907a16-compressed.jpg",
+    "custo": 78.005,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KEZPU0NBKSBD",
+    "nome": "(FOSCA) Camisa Flamengo Lifestyler 24/25 Torcedor ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w31-defeito/maio-junho/56323/gttere/flamengo-brilhosa/yguyfyyf/21f38ea5-16a8-4279-b9f8-96e9e4c038d2.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEZl",
+    "nome": "Camisa Feminina Psg Home I 24/25 - FEM6549",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/feminina/psg/6741d7f5-6d33-4ae6-a53b-719da0489e52.jpg",
+    "custo": 40.003,
+    "precosAtacado": {
+      "drop": 75,
+      "at_3": 60,
+      "at_10": 56,
+      "at_20": 53,
+      "at_50": 50
+    },
+    "categoria": "Modelos Femininos",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TGFuw6dhbWVu",
+    "nome": "Lançamentos Versão Jogador/Player",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/liverpool-jogador-verde/design-sem-nome-2026-02-06t140619-compressed.jpg",
+    "custo": 86.006,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "KFZBWkFEQSkg",
+    "nome": "(VAZADA) Camisa Brasil Home I - Copa do Mundo 2026...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/guuivach/palmeiras-branca/kjbkj/xbxfs/fdfdf/hygfdr/vbbncv/fc-xd/5c990f03-a70a-4abb-a3c3-146158e4385f-compressed.jpg",
+    "custo": 130,
+    "precosAtacado": {
+      "drop": 165,
+      "at_3": 150,
+      "at_10": 146,
+      "at_20": 143,
+      "at_50": 140
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIE1h",
+    "nome": "Camisa Manchester United Away II 25/26 - Jogador M...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/035499/m-u-jogador-2025/design-sem-nome-21.png",
+    "custo": 78.006,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFJl",
+    "nome": "Camisa Real Madrid Third III 25/26 - Azul - Jogado...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/035499/chuteiras/nike-rosa/nike5454/52523/madrid-jogador/design-sem-nome-19-compressed.jpg",
+    "custo": 78.005,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFJp",
+    "nome": "Camisa River Plate Away II 24/25 - Vinho - Jogador...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/pcs-novas/camisa-river-plate-away-ii-2425-cor-jogador-masculina/a6c92cdb-cffa-4e47-a36f-548f6f0dcbaf-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2h1dGVpcmFz",
+    "nome": "Chuteiras - Últimos Lançamentos",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/psg-preta/azuc/bota-society/blue/lilas-e-verde/cinza-verde/rosa-e-azul/verde-e-branco/3210/poiuy/defeyip45/tgg45/53258/lilas/gfn/89e0b6e6-13ea-4b3b-a43e-9f9dd84618fc-compressed.jpg",
+    "custo": 299,
+    "precosAtacado": {
+      "drop": 334,
+      "at_3": 319,
+      "at_10": 315,
+      "at_20": 312,
+      "at_50": 309
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KEJPVElOSEEp",
+    "nome": "(BOTINHA) Chuteira Society Nike Air Zoom Mercurial...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/psg-preta/azuc/bota-society/blue/lilas-e-verde/cinza-verde/rosa-e-azul/verde-e-branco/3210/poiuy/defeyip45/tgg45/53258/lilas/gfn/89e0b6e6-13ea-4b3b-a43e-9f9dd84618fc-compressed.jpg",
+    "custo": 299,
+    "precosAtacado": {
+      "drop": 334,
+      "at_3": 319,
+      "at_10": 315,
+      "at_20": 312,
+      "at_50": 309
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2h1dGVpcmEg",
+    "nome": "Chuteira Society Nike Tiempo (tf) - Branco/laranja...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/psg-preta/azuc/bota-society/blue/lilas-e-verde/cinza-verde/rosa-e-azul/verde-e-branco/3210/poiuy/defeyip45/tgg45/fca1046b-4309-4674-9ba5-4267aff13ec3-compressed.jpg",
+    "custo": 230,
+    "precosAtacado": {
+      "drop": 265,
+      "at_3": 250,
+      "at_10": 246,
+      "at_20": 243,
+      "at_50": 240
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Y2h1dGVpcmEg",
+    "nome": "chuteira Futsal Nike Total 90 Azul - 79676",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/035499/manchester-united-2013/020/soberano-1998/predator-rosa/chuteira-nike-mercurial/mbappe/botinha/total-90-preta/travis-botinha/ihhoi/travis-scott/infantil-internacional/champions-league/santos/futsal-t90/azul/total-90-4-compressed.jpg",
+    "custo": 299,
+    "precosAtacado": {
+      "drop": 334,
+      "at_3": 319,
+      "at_10": 315,
+      "at_20": 312,
+      "at_50": 309
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KEJvdGluaGEp",
+    "nome": "(Botinha) Chuteira Campo Nike Mercurial Superfly 8...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/035499/manchester-united-2013/020/soberano-1998/predator-rosa/chuteira-nike-mercurial/mbappe/botinha/total-90-preta/travis-botinha/d-nq-np-2x-857538-mlu84555907162-052025-f.webp",
+    "custo": 319,
+    "precosAtacado": {
+      "drop": 354,
+      "at_3": 339,
+      "at_10": 335,
+      "at_20": 332,
+      "at_50": 329
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q29uanVudG8g",
+    "nome": "Conjunto Infantil 25/26",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/zzzz214/meias-klv/real-madrid-jogador/bayern-125-torcedor/barcelona-jogador-branca/bege/barcelona-pinnk/preta/feminina-gremio-2025/river-plate-2425/rkfnd/arsenal-infa/2eb5d2f6-cab6-4047-826b-653b0d0ba80d.jpg",
+    "custo": 80.006,
+    "precosAtacado": {
+      "drop": 115.01,
+      "at_3": 100.01,
+      "at_10": 96.01,
+      "at_20": 93.01,
+      "at_50": 90.01
+    },
+    "categoria": "Kits Infantis",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "S2l0IEluZmFu",
+    "nome": "Kit Infantil Palmeiras Away II 25/26 - Branco/Bra...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w28/redbull/345/652-3/ytrgfbnhj/gfbvcxz/851a51fb-f456-4950-9210-ffa6deacb677.jpg",
+    "custo": 40,
+    "precosAtacado": {
+      "drop": 75,
+      "at_3": 60,
+      "at_10": 56,
+      "at_20": 53,
+      "at_50": 50
+    },
+    "categoria": "Kits Infantis",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhcyBS",
+    "nome": "Camisas Retrô",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/guuivach/6a49bf20-1e9f-4ebc-875b-23b6d26a0dd4-compressed.jpg",
+    "custo": 105,
+    "precosAtacado": {
+      "drop": 140,
+      "at_3": 125,
+      "at_10": 121,
+      "at_20": 118,
+      "at_50": 115
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KEFURU7Dh8OD",
+    "nome": "(ATENÇÃO A FONTE) Camisa Retrô Barcelona Away Ii 2...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/3251/real-madrid-regata/brasil/regata-coritnhians/inglaterra-vinho/nba-amarela/vintage/c2387dc7-c152-4246-89a1-026e8542b6c0-compressed.jpg",
+    "custo": 105,
+    "precosAtacado": {
+      "drop": 140,
+      "at_3": 125,
+      "at_10": 121,
+      "at_20": 118,
+      "at_50": 115
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFdl",
+    "nome": "Camisa West Ham United Away II 99/01 – Branca e Az...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/short-conjunto-separado/west-ham-retro/5fa2abcd-0bb0-42be-a520-6ffe7bf0ccea.jpg",
+    "custo": 95,
+    "precosAtacado": {
+      "drop": 130,
+      "at_3": 115,
+      "at_10": 111,
+      "at_20": 108,
+      "at_50": 105
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEVz",
+    "nome": "Camisa Espanha Home 2012/13 – Xavi #8 – Vermelha –...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/nova-pasta/meias/xavi-o-espanha/1d8cb1aa-abcb-4aaf-ab71-d2172017d10c.jpeg",
+    "custo": 105,
+    "precosAtacado": {
+      "drop": 140,
+      "at_3": 125,
+      "at_10": 121,
+      "at_20": 118,
+      "at_50": 115
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFZh",
+    "nome": "Camisa Valencia Retrô Away II 2006/07 Torcedor Mas...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/035499/manchester-united-2013/020/soberano-1998/predator-rosa/chuteira-nike-mercurial/mbappe/botinha/total-90-preta/travis-botinha/ihhoi/travis-scott/infantil-internacional/champions-league/santos/puma-campo-preta-e-verde/botinha/valencia-retr/design-sem-nome-54.png",
+    "custo": 78.005,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UkVHQVRBUyBO",
+    "nome": "REGATAS NBA",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/3251/real-madrid-regata/brasil/regata-coritnhians/inglaterra-vinho/nba-amarela/81h8v-soazl-compressed.jpg",
+    "custo": 99,
+    "precosAtacado": {
+      "drop": 134,
+      "at_3": 119,
+      "at_10": 115,
+      "at_20": 112,
+      "at_50": 109
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIFZlcnPD",
+    "nome": "NBA Versão Retrô #35 Golden State Warriors - Amare...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/3251/real-madrid-regata/brasil/regata-coritnhians/inglaterra-vinho/nba-amarela/81h8v-soazl-compressed.jpg",
+    "custo": 99,
+    "precosAtacado": {
+      "drop": 134,
+      "at_3": 119,
+      "at_10": 115,
+      "at_20": 112,
+      "at_50": 109
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UmVnYXRhIE5C",
+    "nome": "Regata NBA Los Angeles Clippers Statement Edition ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/3251/cfdb/neon/verde/626661/thfer/defet65/xvsvs/c4577f60-70f8-40c4-ab72-f2b1a7be853c-compressed.jpg",
+    "custo": 99,
+    "precosAtacado": {
+      "drop": 134,
+      "at_3": 119,
+      "at_10": 115,
+      "at_20": 112,
+      "at_50": 109
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UmVnYXRhIExv",
+    "nome": "Regata Los Angeles Lakers O'Neal 34 Edição Especia...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w28/redbull/345/652-3/ytrgfbnhj/8535/abe26700-dcdd-46ad-b345-a9c8acb47b23.jpg",
+    "custo": 105.0089,
+    "precosAtacado": {
+      "drop": 140.01,
+      "at_3": 125.01,
+      "at_10": 121.01,
+      "at_20": 118.01,
+      "at_50": 115.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIExvcyBB",
+    "nome": "NBA Los Angeles Lakers Gola Redonda Nº 24 Bryant 7...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w28/redbull/345/652-3/ytrgfbnhj/8535/25i523j/8e8fce16-90b5-490a-8cdc-b92deb1f14ec.jpg",
+    "custo": 105.0089,
+    "precosAtacado": {
+      "drop": 140.01,
+      "at_3": 125.01,
+      "at_10": 121.01,
+      "at_20": 118.01,
+      "at_50": 115.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TmJhIEdvbGRl",
+    "nome": "Nba Golden State Warriors - Durant #35 - Especial ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w26/nba-75-anos-durant/880c477a-519f-4325-91d0-56ad362954aa.jpeg",
+    "custo": 99.0089,
+    "precosAtacado": {
+      "drop": 134.01,
+      "at_3": 119.01,
+      "at_10": 115.01,
+      "at_20": 112.01,
+      "at_50": 109.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIEdvbGRl",
+    "nome": "NBA Golden State Warriors 22/23 - Thompson #11 - 7...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/nba/golden-state-thom-11-diamante/7b8346941-138c9325efc7f66c3816841845320036-640-0-compressed.jpg",
+    "custo": 99.0089,
+    "precosAtacado": {
+      "drop": 134.01,
+      "at_3": 119.01,
+      "at_10": 115.01,
+      "at_20": 112.01,
+      "at_50": 109.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2hpY2FnbyBC",
+    "nome": "Chicago Bulls Scottie Pippen #33 - Edição 75 Anos ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/nba/pippen-33/c67ef05f-d738-4637-85c4-6af96468be1e.jpg",
+    "custo": 105.0089,
+    "precosAtacado": {
+      "drop": 140.01,
+      "at_3": 125.01,
+      "at_10": 121.01,
+      "at_20": 118.01,
+      "at_50": 115.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIEJyb29r",
+    "nome": "NBA Brooklyn Nets Kyrie Irving #11 - Edição 75 ano...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/nba/irving-11/77139805-33cb-42dd-97a0-1841bc394849.jpg",
+    "custo": 105.0089,
+    "precosAtacado": {
+      "drop": 140.01,
+      "at_3": 125.01,
+      "at_10": 121.01,
+      "at_20": 118.01,
+      "at_50": 115.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIE1pdGNo",
+    "nome": "NBA Mitchell & Ness - Chicago Bulls Retro 1984/198...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/nba/chicago-retro/0bdb958f-9243-411c-a5e9-bb3d6c6b44c8.jpg",
+    "custo": 99.0089,
+    "precosAtacado": {
+      "drop": 134.01,
+      "at_3": 119.01,
+      "at_10": 115.01,
+      "at_20": 112.01,
+      "at_50": 109.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIERhbGxh",
+    "nome": "NBA Dallas Mavericks Luka Dončić #77 - 75 ANOS - N...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w-24/nba/dallas-mavericks-luka-don-i-77-75-anos/f5d3747c-3481-43f4-b234-f792e3b5a475.jpeg",
+    "custo": 105.0089,
+    "precosAtacado": {
+      "drop": 140.01,
+      "at_3": 125.01,
+      "at_10": 121.01,
+      "at_20": 118.01,
+      "at_50": 115.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIEJ1Y2tz",
+    "nome": "NBA Bucks ANTETOKOUNMPO #34 - Silk - NBA6451",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/93e43d4d-a7ee-4869-841a-fd864c760c67-compressed.jpg",
+    "custo": 99.0089,
+    "precosAtacado": {
+      "drop": 134.01,
+      "at_3": 119.01,
+      "at_10": 115.01,
+      "at_20": 112.01,
+      "at_50": 109.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIENoaWNh",
+    "nome": "NBA Chicago Bulls Rodman #91 - 75 ANOS - Vermelha ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w-24/nba/bulls-91-75-anos-vermelha/6f9b622d-024a-4480-83e3-ad4b65fad85c.jpeg",
+    "custo": 105.0089,
+    "precosAtacado": {
+      "drop": 140.01,
+      "at_3": 125.01,
+      "at_10": 121.01,
+      "at_20": 118.01,
+      "at_50": 115.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIEphbWVz",
+    "nome": "NBA James Harden Philadelphia 76ers Player-Issued ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w-24/nba/azul-1/4bee5896-55f4-4f7c-b2f9-3c393a2b7640.jpeg",
+    "custo": 99.0089,
+    "precosAtacado": {
+      "drop": 134.01,
+      "at_3": 119.01,
+      "at_10": 115.01,
+      "at_20": 112.01,
+      "at_50": 109.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TkJBIFBoaWxh",
+    "nome": "NBA Philadelphia 76ers City Edition 23/24 Joel Emb...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tbehr/chuteira-defeito/cobre/brasil/ddss/brasil-infantil/cbhdbf/fghre/nike-chut/srkorofmd/333333/fnfgh/gfds/5656/6724ed35-daeb-4eaa-bccc-133fad9a6021-compressed.jpg",
+    "custo": 99.0089,
+    "precosAtacado": {
+      "drop": 134.01,
+      "at_3": 119.01,
+      "at_10": 115.01,
+      "at_20": 112.01,
+      "at_50": 109.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIE5C",
+    "nome": "Camisa NBA Brooklyn Nets City Edition James Harden...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w-24/nba/camisa-de-basquete-brooklyn-nets-city-edition-nba-james-harden-n13-cinza-91-9bbc0e7c5ea9bb2a2716746869549787-1024-1024-compressed.jpg",
+    "custo": 105.0089,
+    "precosAtacado": {
+      "drop": 140.01,
+      "at_3": 125.01,
+      "at_10": 121.01,
+      "at_20": 118.01,
+      "at_50": 115.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UmVnYXRhIFZh",
+    "nome": "Regata Vasco da Gama Treino 24/25 - Torcedor Mascu...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisa-2425/regata-vasco/e58212fd-4153-45d2-b7fa-db7346978d9a.jpg",
+    "custo": 70.003,
+    "precosAtacado": {
+      "drop": 105,
+      "at_3": 90,
+      "at_10": 86,
+      "at_20": 83,
+      "at_50": 80
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UmVnYXRhIFNl",
+    "nome": "Regata Seleção Brasileira 24/25 Torcedor Masculina...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/0333/0303/d991002b-4a73-4100-9079-55a48887a941-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UmVnYXRhIFBh",
+    "nome": "Regata Palmeiras Home I 24/25 - Verde - 78977",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/defeitos/palme/novidades-junho/regatas-palmeiras/582d282c-169d-43c7-ba13-53fa7452c012-compressed.jpg",
+    "custo": 70.003,
+    "precosAtacado": {
+      "drop": 105,
+      "at_3": 90,
+      "at_10": 86,
+      "at_20": 83,
+      "at_50": 80
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q29wYSBkbyBN",
+    "nome": "Copa do Mundo de 2022 do Brasil - Feminina Azul - ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/feminina/fe2393d5-efa7-4099-8c3c-36912e75421f-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Modelos Femininos",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q29wYSBEbyBN",
+    "nome": "Copa Do Mundo De 2022 Do Brasil - Feminina Amarelo...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/feminina/cbb0a6a4-5e43-4088-a36b-a6b91066878d-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Modelos Femininos",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhcyBQ",
+    "nome": "Camisas Palmeiras Away 23/24 - Branca - Torcedor M...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/aaaaaaaa/camisa/novas-23/editadas/palmeiras/612432d5-compressed-editado.png",
+    "custo": 78.003,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFVT",
+    "nome": "Camisa USA Home I 25/26 - Torcedor Masculina - 434...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/035499/chuteiras/nike-rosa/nike5454/52523/madrid-jogador/flam-retr/chuteira-nike-preto-e-cinza/dourada/chuteira-campo-adidas-x-speedportal-fg/manchester-united-2013/botafogo/design-sem-nome-44.png",
+    "custo": 78.007,
+    "precosAtacado": {
+      "drop": 113.01,
+      "at_3": 98.01,
+      "at_10": 94.01,
+      "at_20": 91.01,
+      "at_50": 88.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFRp",
+    "nome": "Camisa Tigres Home I 25/26 - Amarela - Torcedor M...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w28/corinthians-gola-polo-2526/tigres-2526/10eec8d1-88ab-4a98-b58f-90b35870f5d8.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TEFOw4dBTUVO",
+    "nome": "LANÇAMENTO > TEMPORADA 26/27",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/guuivach/palmeiras-branca/kjbkj/xbxfs/fdfdf/hygfdr/vbbncv/fc-xd/fdvssdd/gfhtett/8996/design-sem-nome-78-compressed.jpg",
+    "custo": 100,
+    "precosAtacado": {
+      "drop": 135,
+      "at_3": 120,
+      "at_10": 116,
+      "at_20": 113,
+      "at_50": 110
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIFBo",
+    "nome": "Camisa Pherusa 130 anos do Flamengo 2025 - Preta e...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/3251/real-madrid-regata/brasil/regata-coritnhians/inglaterra-vinho/nba-amarela/vintage/5161511/design-sem-nome-2026-03-14t110533-compressed.jpg",
+    "custo": 83.007,
+    "precosAtacado": {
+      "drop": 118.01,
+      "at_3": 103.01,
+      "at_10": 99.01,
+      "at_20": 96.01,
+      "at_50": 93.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEJy",
+    "nome": "Camisa Brasil Home I - Copa do Mundo 2026 – Amarel...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/guuivach/palmeiras-branca/kjbkj/xbxfs/fdfdf/hygfdr/vbbncv/fc-xd/fdvssdd/gfhtett/8996/kjhgjh/6df1aa72-dbb3-4280-9ad2-8da56ca9e1fb-compressed.jpg",
+    "custo": 130,
+    "precosAtacado": {
+      "drop": 165,
+      "at_3": 150,
+      "at_10": 146,
+      "at_20": 143,
+      "at_50": 140
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "VkVSU8ODTyBK",
+    "nome": "VERSÃO JOGADOR/PLAYER",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/feminina/7683d064-7502-46b7-a417-ae98f971ce42-compressed.jpg",
+    "custo": 86.006,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "VkVSU8ODTyBU",
+    "nome": "VERSÃO TORCEDOR/FÃ",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/guuivach/palmeiras-branca/kjbkj/xbxfs/fdfdf/hygfdr/vbbncv/fc-xd/fdvssdd/gfhtett/8996/design-sem-nome-78-compressed.jpg",
+    "custo": 70.003,
+    "precosAtacado": {
+      "drop": 105,
+      "at_3": 90,
+      "at_10": 86,
+      "at_20": 83,
+      "at_50": 80
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "VkVSU8ODTyBG",
+    "nome": "VERSÃO FEMININA",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/guuivach/palmeiras-branca/kjbkj/xbxfs/design-sem-nome-69-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Modelos Femininos",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "VEVNUE9SQURB",
+    "nome": "TEMPORADA 25/26",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/3251/cfdb/design-sem-nome-2026-03-04t160701-compressed.jpg",
+    "custo": 86.007,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEp1",
+    "nome": "Camisa Juventus Away II 25/26 - Jogador Masculina ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w28/juventus-jogador-2526/1a3c6eed-9a75-4b69-a7f6-31d5d9f5c164-compressed.jpg",
+    "custo": 86.006,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q0FNSVNBIFBB",
+    "nome": "CAMISA PALMEIRAS AWAY II 24/25 BRANCA - TORCEDOR M...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tempora-marco-novidades/camisa-24-25/palmeiras-branca-24/7ce1d947-eaa4-4cf3-842c-663b771539cf-compressed.jpg",
+    "custo": 40,
+    "precosAtacado": {
+      "drop": 75,
+      "at_3": 60,
+      "at_10": 56,
+      "at_20": 53,
+      "at_50": 50
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIE5l",
+    "nome": "Camisa Newcastle Third III 24/25 Torcedor Masculin...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisa-2425/newcastle-third-iii/eec4bf0b-dc26-48e3-8325-669e35a2e29b.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q0FNSVNBIE1B",
+    "nome": "CAMISA MANCHESTER UNITED THIRD III 24/25 JOGADOR -...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisas/manchester-bege-jogador/9ed82e17-e117-4989-aea4-3f54124a2d6e-compressed.jpg",
+    "custo": 86.006,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIGlu",
+    "nome": "Camisa inter Miami HOME I 24/25 jogador Rosa - 154...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/temporada-maio-24/miami-rosa/8b106e29-2791-4ca7-af3e-83e525306fe6.jpg",
+    "custo": 86.0076,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIENy",
+    "nome": "Camisa Croácia AWAY II 24/25 Jogador - Azul - JOG2...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/croacia-24-25/f7d8b8fc-2247-4b19-bc67-3d7ece208d73.jpg",
+    "custo": 86.0076,
+    "precosAtacado": {
+      "drop": 121.01,
+      "at_3": 106.01,
+      "at_10": 102.01,
+      "at_20": 99.01,
+      "at_50": 96.01
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "PiBQUk9NT0NJ",
+    "nome": "> PROMOCIONAIS 24/25",
+    "img": "https://img.irroba.com.br/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/aviso-defeito/pecas-em-promocao-nao-realizamos-troca-2.png",
+    "custo": 70.003,
+    "precosAtacado": {
+      "drop": 105,
+      "at_3": 90,
+      "at_10": 86,
+      "at_20": 83,
+      "at_50": 80
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q09OSlVOVE8g",
+    "nome": "CONJUNTO TREINO REGATA + SHORT MANCHESTER CITY 202...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tshort-jogo/defeitos/palme/novidades-junho/novidades-julho/regta-e-short-city-bege/c4916890-19a3-49ec-a8d5-da0e80262a1f-compressed.jpg",
+    "custo": 105.0049,
+    "precosAtacado": {
+      "drop": 140,
+      "at_3": 125,
+      "at_10": 121,
+      "at_20": 118,
+      "at_50": 115
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIERl",
+    "nome": "Camisa De Treino Brasil Preta Leopardo - Torcedor ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tbehr/chuteira-defeito/cobre/brasil/ddss/brasil-infantil/cbhdbf/fghre/nike-chut/srkorofmd/333333/fnfgh/design-sem-nome-50-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "QnJhc2lsIENv",
+    "nome": "Brasil Copa do Mundo de 2022 - Torcedor Masculina ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/2022/72eb4a1f-e281-47eb-b69b-e4376e19719d-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "MjIvMjMgQnJh",
+    "nome": "22/23 Brasil Classic Blue - Torcedor Masculina - 0...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/gola-verde-escuro/jogador/6e675a0a-97d6-47df-869d-a86d41047a09-compressed.jpg",
+    "custo": 86,
+    "precosAtacado": {
+      "drop": 121,
+      "at_3": 106,
+      "at_10": 102,
+      "at_20": 99,
+      "at_50": 96
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "KERFRkVJVE8p",
+    "nome": "(DEFEITO) Camisa Treino do 23/24 - Branco (Lateral...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/sshi/b30a9353-4f64-4d98-a892-239dddc60d6e.jpg",
+    "custo": 60,
+    "precosAtacado": {
+      "drop": 95,
+      "at_3": 80,
+      "at_10": 76,
+      "at_20": 73,
+      "at_50": 70
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q0FNSVNBUyBS",
+    "nome": "CAMISAS RETRÔ",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/short-conjunto-separado/west-ham-retro/5fa2abcd-0bb0-42be-a520-6ffe7bf0ccea.jpg",
+    "custo": 95,
+    "precosAtacado": {
+      "drop": 130,
+      "at_3": 115,
+      "at_10": 111,
+      "at_20": 108,
+      "at_50": 105
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q0FNSVNBIFJF",
+    "nome": "CAMISA RETRÔ REAL MADRID HOME I 03/04 - RETRO548",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w-24/retro/real/cbef69a8-f7a0-44f6-ba21-874eb43973d1-compressed.jpg",
+    "custo": 95,
+    "precosAtacado": {
+      "drop": 130,
+      "at_3": 115,
+      "at_10": 111,
+      "at_20": 108,
+      "at_50": 105
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "TEVOREFTIERP",
+    "nome": "LENDAS DO FUTEBOL",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/retro-novas/terry/totti/592fea1f-23e9-4137-b993-e97fb5d80d12-compressed.jpg",
+    "custo": 105,
+    "precosAtacado": {
+      "drop": 140,
+      "at_3": 125,
+      "at_10": 121,
+      "at_20": 118,
+      "at_50": 115
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UkVUUsOUIHMv",
+    "nome": "RETRÔ s/ PERSONALIZAÇÃO",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/short-conjunto-separado/west-ham-retro/5fa2abcd-0bb0-42be-a520-6ffe7bf0ccea.jpg",
+    "custo": 95,
+    "precosAtacado": {
+      "drop": 130,
+      "at_3": 115,
+      "at_10": 111,
+      "at_20": 108,
+      "at_50": 105
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "QlJBU0lM",
+    "nome": "BRASIL",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/feminina/fe2393d5-efa7-4099-8c3c-36912e75421f-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIEdv",
+    "nome": "Camisa Gola Polo Brasil 21/22 - Azul - torcedor - ...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/gola-verde-escuro/jogador/c0a9fe2c-d58e-45fa-b7b8-283151f6e5f0-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Polos / Casuais",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q0FNSVNBIEZF",
+    "nome": "CAMISA FEMININA DA SELEÇÃO BRASILEIRA PRETA COPA 2...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/feminina/eb7fa02b-2bdb-4690-aac7-fefb81b393f7-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Modelos Femininos",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIGRl",
+    "nome": "Camisa de treino Seleção Brasileira 20/21 - torced...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/gola-verde-escuro/jogador/e9fd875f-a298-4289-83cb-d27cc38bec46-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UE9VQ0FTIFFV",
+    "nome": "POUCAS QUANTIDADES",
+    "img": "https://img.irroba.com.br/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/aviso-defeito/pecas-em-promocao-nao-realizamos-troca-2.png",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "Q2FtaXNhIERv",
+    "nome": "Camisa Do Grêmio Third - Celeste - 22/23 - Torcedo...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w31-defeito/maio-junho/56323/gttere/flamengo-brilhosa/b48b5612-264b-4a00-8302-7c83bc2dbe0b.jpg",
+    "custo": 60,
+    "precosAtacado": {
+      "drop": 95,
+      "at_3": 80,
+      "at_10": 76,
+      "at_20": 73,
+      "at_50": 70
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "REVGRUlUT1Mg",
+    "nome": "DEFEITOS - CHUTEIRA",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w27/deft/101010/continua/3561/b0e9769c-compressed-compressed.jpg",
+    "custo": 230,
+    "precosAtacado": {
+      "drop": 265,
+      "at_3": 250,
+      "at_10": 246,
+      "at_20": 243,
+      "at_50": 240
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UEXDh0FTIENP",
+    "nome": "PEÇAS COM DEFEITO EM PROMOÇÃO",
+    "img": "https://img.irroba.com.br/filters:format(webp):fill(transparent):quality(80)/fortalim/catalog/aviso-defeito/pecas-em-promocao-nao-realizamos-troca-2.png",
+    "custo": 50,
+    "precosAtacado": {
+      "drop": 85,
+      "at_3": 70,
+      "at_10": 66,
+      "at_20": 63,
+      "at_50": 60
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "VGhpcmQgSUlJ",
+    "nome": "Third III 24/25 - Jogador - DEF956",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w25/defeitos/chel-jog-df/70b152d3-e6ee-4f5a-be8c-509ac6bb7227.jpg",
+    "custo": 50,
+    "precosAtacado": {
+      "drop": 85,
+      "at_3": 70,
+      "at_10": 66,
+      "at_20": 63,
+      "at_50": 60
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "U29iZXJhbm8g",
+    "nome": "Soberano Home I 25/26 - Branca - Jogador Masculina...",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w30/atletico-mineiro-preta2625/milao-patr/rggvsdfc/novas-conteiner/arsenal-retro/30515/soberano-inf/gremio-alfa/02689607-c7cb-406c-a329-906b5062ce33.jpg",
+    "custo": 50,
+    "precosAtacado": {
+      "drop": 85,
+      "at_3": 70,
+      "at_10": 66,
+      "at_20": 63,
+      "at_50": 60
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "RkVNIFRFTVBP",
+    "nome": "FEM TEMPORADA 25/26",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/w30/atletico-mineiro-preta2625/milao-patr/rggvsdfc/novas-conteiner/real-madrid-fem2526/ed73695f-7dec-47ac-a09c-5437e4411b42-compressed.jpg",
+    "custo": 78.005,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Modelos Femininos",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "RkVNIDIzLzI0",
+    "nome": "FEM 23/24 - VALOR PROMOCIONAL",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/323656/ferfsd/feminina/fe2393d5-efa7-4099-8c3c-36912e75421f-compressed.jpg",
+    "custo": 78,
+    "precosAtacado": {
+      "drop": 113,
+      "at_3": 98,
+      "at_10": 94,
+      "at_20": 91,
+      "at_50": 88
+    },
+    "categoria": "Modelos Femininos",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UkVHQVRBUw==",
+    "nome": "REGATAS",
+    "img": "https://img.irroba.com.br/fit-in/600x600/filters:format(webp):fill(fff):quality(80)/fortalim/catalog/tem-agosto-2024/camisa-2425/regata-vasco/e58212fd-4153-45d2-b7fa-db7346978d9a.jpg",
+    "custo": 70.003,
+    "precosAtacado": {
+      "drop": 105,
+      "at_3": 90,
+      "at_10": 86,
+      "at_20": 83,
+      "at_50": 80
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": true,
+    "status": "ativo"
+  },
+  {
+    "id": "UEVESURPIFBP",
+    "nome": "PEDIDO POR FORA",
+    "img": "https://img.irroba.com.br/fit-in/600x600/irroba/no-image.png",
+    "custo": 1,
+    "precosAtacado": {
+      "drop": 36,
+      "at_3": 21,
+      "at_10": 17,
+      "at_20": 14,
+      "at_50": 11
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
+  },
+  {
+    "id": "UGVkaWRvIHBv",
+    "nome": "Pedido por fora - FORA022",
+    "img": "https://img.irroba.com.br/fit-in/600x600/irroba/no-image.png",
+    "custo": 1,
+    "precosAtacado": {
+      "drop": 36,
+      "at_3": 21,
+      "at_10": 17,
+      "at_20": 14,
+      "at_50": 11
+    },
+    "categoria": "Camisas de Time",
+    "esgotado": false,
+    "status": "ativo"
   }
 ]
