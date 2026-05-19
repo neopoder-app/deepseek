@@ -1,220 +1,204 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEOPODER.SHOP | Catálogo Premium Atacado</title>
+    <title>Painel NEOPODER.SHOP</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #0b0c10; color: #e5e7eb; }
-        .goat-dark { background: linear-gradient(135deg, #11141c 0%, #171d2a 100%); }
-        .text-gold { color: #f5b041; }
-        .bg-gold { background-color: #f5b041; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background-color: #0f172a; color: #f8fafc; }
+        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid #334155; }
     </style>
 </head>
-<body class="max-w-6xl mx-auto min-h-screen flex flex-col pb-16 antialiased px-2 sm:px-4">
+<body class="font-sans antialiased min-h-screen">
 
-    <header class="goat-dark border-b border-yellow-500/30 p-4 mt-2 rounded-2xl sticky top-2 z-50 shadow-2xl backdrop-blur-md bg-opacity-95">
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gold flex items-center justify-center font-black text-black text-lg shadow-md">NP</div>
-                <div>
-                    <h1 class="text-lg font-black tracking-tight text-white">NEOPODER<span class="text-gold">.SHOP</span></h1>
-                    <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Distribuição e Importação Esportiva</p>
-                </div>
+    <header class="bg-slate-900 border-b border-emerald-500 p-4 shadow-lg flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <img src="/NEOPODER.SHOP.png" alt="Logo" class="h-10 w-10 object-contain bg-white rounded-full p-1" onerror="this.style.display='none'">
+            <div>
+                <h1 class="text-2xl font-black text-emerald-400 tracking-wider">NEOPODER.SHOP</h1>
+                <p class="text-xs text-slate-400 font-mono tracking-widest uppercase">Sistema de Gestão de Catálogo</p>
             </div>
-            
-            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
-                <span class="text-[10px] uppercase font-black px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Sistema Online
-                </span>
-                <button onclick="alternarAdmin()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-bold px-3 py-1.5 rounded-lg border border-gray-700 transition">
-                    ⚙️ Painel
-                </button>
-            </div>
+        </div>
+        <div class="flex gap-4 items-center">
+            <span id="status-robo" class="text-xs font-bold px-3 py-1 bg-slate-800 text-emerald-400 border border-emerald-500 rounded-full animate-pulse">
+                Robô: Em Espera
+            </span>
+            <button onclick="forcarVarredura()" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold py-2 px-4 rounded shadow transition">
+                🔄 Forçar Atualização do Robô
+            </button>
         </div>
     </header>
 
-    <nav class="my-4 p-2 bg-[#11141c]/50 rounded-xl border border-gray-800/80 overflow-hidden">
-        <div id="abasCategorias" class="flex gap-2 overflow-x-auto no-scrollbar py-1 px-1">
-            <button onclick="filtrarCategoria('TODOS')" class="px-4 py-2 rounded-lg text-xs font-black uppercase transition whitespace-nowrap bg-gold text-black">✨ Todos Itens</button>
-        </div>
-    </nav>
-
-    <main class="flex-1">
-        <div id="gridProdutos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <main class="max-w-7xl mx-auto p-6 space-y-6">
+        
+        <div id="alerta-whatsapp" class="hidden glass-panel border-l-4 border-l-green-500 p-4 rounded-lg flex justify-between items-center">
+            <div>
+                <h3 class="text-green-400 font-bold text-lg">Novos Produtos Encontrados!</h3>
+                <p class="text-sm text-slate-300">O robô adicionou novos itens ao catálogo. Clique para notificar o administrador.</p>
             </div>
+            <button onclick="enviarAlertaWhatsApp()" class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded-lg shadow-lg flex items-center gap-2 transition">
+                💬 Enviar para WhatsApp
+            </button>
+        </div>
+
+        <div class="glass-panel rounded-xl p-6 shadow-2xl">
+            <div class="flex justify-between items-end mb-6 border-b border-slate-700 pb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-white">Catálogo de Produtos</h2>
+                    <p class="text-sm text-slate-400">Altere preços, categorias ou apague itens diretamente na tabela.</p>
+                </div>
+                <input type="text" id="pesquisa" onkeyup="renderizarTabela()" placeholder="Pesquisar produto..." class="bg-slate-800 border border-slate-600 text-white text-sm rounded-lg block p-2.5 w-64 focus:ring-emerald-500 focus:border-emerald-500">
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="text-xs text-slate-400 uppercase bg-slate-800/50">
+                        <tr>
+                            <th class="px-4 py-3 rounded-tl-lg">Imagem</th>
+                            <th class="px-4 py-3">Produto</th>
+                            <th class="px-4 py-3">Categoria</th>
+                            <th class="px-4 py-3 text-center">Custo (R$)</th>
+                            <th class="px-4 py-3 text-center">Preço Venda (+17)</th>
+                            <th class="px-4 py-3 text-center rounded-tr-lg">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpo_tabela" class="divide-y divide-slate-700">
+                        </tbody>
+                </table>
+            </div>
+        </div>
     </main>
 
-    <section id="painelAdmin" class="hidden fixed bottom-0 left-0 right-0 max-w-6xl mx-auto bg-[#11141c] border-t-2 border-yellow-500 p-4 z-50 rounded-t-2xl shadow-2xl max-h-[400px] overflow-y-auto">
-        <div class="flex justify-between items-center mb-4 border-b border-gray-800 pb-2">
-            <h3 class="text-xs font-black uppercase text-gold">⚙️ Configurações Manuais de Custos</h3>
-            <button onclick="alternarAdmin()" class="text-[11px] font-bold px-2 py-1 bg-red-600 text-white rounded">Fechar</button>
-        </div>
-        <div id="tabelaAdmin" class="space-y-2"></div>
-    </section>
-
     <script>
-        let dadosGlobais = { produtos: [], config: {} };
-        let categoriaAtual = 'TODOS';
+        let produtos = [];
+        let config = {};
+        const whatsappAdmin = "5511915184857";
 
-        async function inicializarApp() {
+        async function carregarDados() {
             try {
-                // Tenta buscar da API local (Ambiente Backend)
                 const res = await fetch('/api/dados');
-                const json = await res.json();
-                dadosGlobais.produtos = json.produtos;
-                dadosGlobais.config = json.config;
+                const dados = await res.json();
+                produtos = dados.produtos || [];
+                config = dados.config || {};
+                
+                // Mostra alerta se houver produtos marcados como "pendente"
+                const novos = produtos.filter(p => p.status === 'pendente').length;
+                if(novos > 0) {
+                    document.getElementById('alerta-whatsapp').classList.remove('hidden');
+                } else {
+                    document.getElementById('alerta-whatsapp').classList.add('hidden');
+                }
+
+                renderizarTabela();
             } catch (e) {
-                // Fallback automático para o GitHub Pages (Ambiente Estático)
-                const rProd = await fetch('./banco_produtos.json');
-                const rConf = await fetch('./config_atacado.json');
-                dadosGlobais.produtos = await rProd.json();
-                dadosGlobais.config = await rConf.json();
+                console.error("Erro ao carregar os dados", e);
             }
-            executarRenderizacao();
         }
 
-        function executarRenderizacao() {
-            renderizarMenuCategorias();
-            renderizarProdutosVitrine();
-            renderizarLinhasAdmin();
-        }
+        function renderizarTabela() {
+            const corpo = document.getElementById('corpo_tabela');
+            const termo = document.getElementById('pesquisa').value.toLowerCase();
+            corpo.innerHTML = '';
 
-        function renderizarMenuCategorias() {
-            const container = document.getElementById('abasCategorias');
-            const categorias = [...new Set(dadosGlobais.produtos.map(p => p.categoria))].filter(Boolean);
-            
-            let html = `<button onclick="filtrarCategoria('TODOS')" class="px-4 py-2 rounded-lg text-xs font-black uppercase transition whitespace-nowrap ${categoriaAtual === 'TODOS' ? 'bg-gold text-black' : 'bg-gray-800 text-gray-400'}">✨ Todos Itens</button>`;
-            
-            categorias.forEach(cat => {
-                const isSelected = categoriaAtual === cat;
-                html += `
-                    <button onclick="filtrarCategoria('${cat}')" class="px-4 py-2 rounded-lg text-xs font-black uppercase transition whitespace-nowrap ${isSelected ? 'bg-gold text-black' : 'bg-gray-800 text-gray-400'}">
-                        👕 ${cat}
-                    </button>
-                `;
-            });
-            container.innerHTML = html;
-        }
+            const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
 
-        function filtrarCategoria(cat) {
-            categoriaAtual = cat;
-            renderizarMenuCategorias();
-            renderizarProdutosVitrine();
-        }
-
-        function renderizarProdutosVitrine() {
-            const grid = document.getElementById('gridProdutos');
-            grid.innerHTML = '';
-
-            const filtrados = dadosGlobais.produtos.filter(p => (categoriaAtual === 'TODOS' || p.categoria === categoriaAtual) && p.status !== 'oculto');
-
-            if (filtrados.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-xs font-bold text-gray-500">Nenhum item localizado para exibição.</div>`;
+            if(filtrados.length === 0) {
+                corpo.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-500">Nenhum produto encontrado ou catálogo vazio.</td></tr>`;
                 return;
             }
 
             filtrados.forEach(p => {
-                let faixasHTML = '';
-                if(dadosGlobais.config.lucro && dadosGlobais.config.lucro.faixas) {
-                    dadosGlobais.config.lucro.faixas.forEach(f => {
-                        const precoFinal = p.custo + f.margemFixa;
-                        faixasHTML += `
-                            <div class="flex justify-between items-center text-[11px] border-b border-gray-800/60 py-1 px-0.5">
-                                <span class="text-gray-400 font-medium">${f.nome}</span>
-                                <span class="font-black text-emerald-400">R$ ${precoFinal.toFixed(2)}</span>
-                            </div>
-                        `;
-                    });
-                }
-
-                const linkWhats = `https://wa.me/${dadosGlobais.config.whatsappAdmin}?text=Olá! Quero comprar o lote do produto: *${encodeURIComponent(p.nome)}*`;
-
-                grid.innerHTML += `
-                    <div class="bg-[#11141c] rounded-2xl border border-gray-800/80 overflow-hidden p-3 flex flex-col justify-between shadow-lg hover:border-yellow-500/20 transition-all">
-                        <div>
-                            <div class="relative w-full h-64 bg-[#171d2a] rounded-xl overflow-hidden mb-3 border border-gray-800/50">
-                                <img src="${p.img}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x500?text=Sem+Foto'">
-                                ${p.esgotado ? `<div class="absolute inset-0 bg-black/70 flex items-center justify-center font-black text-xs text-red-500">Sem Estoque</div>` : ''}
-                                <span class="absolute top-2 left-2 text-[8px] font-bold bg-black/60 text-gold px-2 py-0.5 rounded border border-yellow-500/20 uppercase">${p.categoria}</span>
-                            </div>
-                            <h3 class="text-xs font-bold text-gray-200 line-clamp-2 leading-tight mb-2 min-h-[32px]">${p.nome}</h3>
-                            
-                            <div class="bg-[#171d2a] p-2 rounded-xl border border-gray-800 space-y-1">
-                                <span class="block text-[8px] font-black text-gold uppercase tracking-wider mb-1">📋 Preços e Escalas de Compra:</span>
-                                ${faixasHTML}
-                            </div>
-                        </div>
-
-                        <div class="mt-3">
-                            <div class="flex gap-1 overflow-x-auto no-scrollbar mb-3">
-                                ${p.tamanhos.map(t => `<span class="px-2 py-0.5 text-[9px] font-bold bg-[#171d2a] border border-gray-800 rounded text-gray-400">${t}</span>`).join('')}
-                            </div>
-                            <a href="${linkWhats}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-black font-black text-xs py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition text-white decoration-none">
-                                💬 Encomendar Atacado
-                            </a>
-                        </div>
-                    </div>
+                const isPendente = p.status === 'pendente';
+                const tr = document.createElement('tr');
+                tr.className = `hover:bg-slate-800/50 transition ${isPendente ? 'bg-emerald-900/20' : ''}`;
+                tr.innerHTML = `
+                    <td class="px-4 py-3">
+                        <img src="${p.img}" class="w-12 h-12 object-cover rounded border border-slate-600 bg-slate-800">
+                    </td>
+                    <td class="px-4 py-3 font-semibold text-white max-w-[200px] truncate" title="${p.nome}">
+                        ${isPendente ? '<span class="text-[10px] bg-emerald-500 text-slate-900 px-1 rounded mr-1">NOVO</span>' : ''}
+                        ${p.nome}
+                    </td>
+                    <td class="px-4 py-3">
+                        <select onchange="atualizarCampo('${p.id}', 'categoria', this.value)" class="bg-slate-700 border border-slate-600 text-white text-xs rounded p-1 w-full">
+                            <option value="${p.categoria}" selected>${p.categoria}</option>
+                            <option value="Camisas de Time">Camisas de Time</option>
+                            <option value="Corta-Ventos">Corta-Ventos</option>
+                            <option value="Kits Infantis">Kits Infantis</option>
+                            <option value="Modelos Femininos">Modelos Femininos</option>
+                        </select>
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        <input type="number" step="0.01" value="${p.custo}" onchange="atualizarCampo('${p.id}', 'custo', this.value)" class="bg-slate-700 border border-slate-600 text-white text-xs font-mono rounded p-1 w-20 text-center">
+                    </td>
+                    <td class="px-4 py-3 text-center font-mono font-bold text-emerald-400">
+                        R$ ${(p.custo + 17).toFixed(2)}
+                    </td>
+                    <td class="px-4 py-3 text-center">
+                        <button onclick="removerProduto('${p.id}')" class="text-red-400 hover:text-red-300 bg-red-900/30 px-2 py-1 rounded text-xs font-bold transition">Apagar</button>
+                    </td>
                 `;
+                corpo.appendChild(tr);
             });
         }
 
-        function alternarAdmin() {
-            document.getElementById('painelAdmin').classList.toggle('hidden');
-        }
-
-        function renderizarLinhasAdmin() {
-            const container = document.getElementById('tabelaAdmin');
-            container.innerHTML = '';
-
-            dadosGlobais.produtos.forEach(p => {
-                container.innerHTML += `
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-[#171d2a] p-2 rounded-lg border border-gray-800 text-[11px] gap-2">
-                        <span class="font-bold text-gray-300 truncate w-full sm:w-72">${p.nome}</span>
-                        <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
-                            <input id="input-${p.id}" type="number" step="0.01" value="${p.custo}" class="w-20 bg-[#11141c] border border-gray-700 text-center text-white py-1 rounded font-bold">
-                            <select id="select-${p.id}" class="bg-[#11141c] border border-gray-700 text-white py-1 rounded px-1">
-                                <option value="aprovado" ${p.status === 'aprovado' ? 'selected' : ''}>Mostrar</option>
-                                <option value="oculto" ${p.status === 'oculto' ? 'selected' : ''}>Ocultar</option>
-                            </select>
-                            <button onclick="salvarAlteracao('${p.id}')" class="bg-blue-600 text-white font-bold px-3 py-1 rounded hover:bg-blue-500">Salvar</button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        async function salvarAlteracao(id) {
-            const novoPreco = document.getElementById(`input-${id}`).value;
-            const status = document.getElementById(`select-${id}`).value;
-
-            try {
-                const res = await fetch('/api/ajuste-manual', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id, novoPreco, status })
-                });
-                if(res.ok) {
-                    alert('Sincronizado e salvo com sucesso!');
-                    inicializarApp();
-                }
-            } catch(e) {
-                // Modo offline / GitHub Pages (Apenas alteração de memória em tela)
-                const idx = dadosGlobais.produtos.findIndex(p => p.id === id);
-                if(idx !== -1) {
-                    dadosGlobais.produtos[idx].custo = parseFloat(novoPreco);
-                    dadosGlobais.produtos[idx].status = status;
-                    executarRenderizacao();
-                    alert('Alteração aplicada localmente na visualização.');
-                }
+        async function atualizarCampo(id, campo, valor) {
+            const idx = produtos.findIndex(p => p.id === id);
+            if(idx !== -1) {
+                if(campo === 'custo') produtos[idx].custo = parseFloat(valor);
+                else produtos[idx][campo] = valor;
+                
+                produtos[idx].status = 'ativo'; // Remove o status de pendente ao editar
+                await salvarNoServidor();
             }
         }
 
-        window.onload = inicializarApp;
+        async function removerProduto(id) {
+            if(confirm('Remover permanentemente este produto do catálogo?')) {
+                produtos = produtos.filter(p => p.id !== id);
+                await salvarNoServidor();
+            }
+        }
+
+        async function salvarNoServidor() {
+            await fetch('/api/salvar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ produtos })
+            });
+            carregarDados();
+        }
+
+        async function forcarVarredura() {
+            const btn = document.getElementById('status-robo');
+            btn.className = "text-xs font-bold px-3 py-1 bg-blue-900 text-blue-400 border border-blue-500 rounded-full animate-pulse";
+            btn.innerText = "Robô: A Trabalhar...";
+            
+            alert('O robô iniciou a extração no fornecedor. Isto pode demorar 1 a 2 minutos. O painel atualizará sozinho.');
+            
+            await fetch('/api/varrer', { method: 'POST' });
+            
+            setTimeout(() => {
+                btn.className = "text-xs font-bold px-3 py-1 bg-slate-800 text-emerald-400 border border-emerald-500 rounded-full";
+                btn.innerText = "Robô: Em Espera";
+                carregarDados();
+            }, 60000); // Tenta atualizar a tabela após 1 minuto
+        }
+
+        function enviarAlertaWhatsApp() {
+            const pendentes = produtos.filter(p => p.status === 'pendente').length;
+            const msg = `🔥 *NEOPODER.SHOP*\n\nRobô finalizou a extração!\n🎯 Encontrámos *${pendentes} novos produtos*.\nAceda ao painel administrativo para verificar as categorias e preços.`;
+            const url = `https://wa.me/${whatsappAdmin}?text=${encodeURIComponent(msg)}`;
+            
+            // Marca como ativos para o aviso não voltar a aparecer até à próxima extração
+            produtos.forEach(p => { if(p.status === 'pendente') p.status = 'ativo'; });
+            salvarNoServidor();
+            
+            window.open(url, '_blank');
+        }
+
+        window.onload = carregarDados;
     </script>
 </body>
 </html>

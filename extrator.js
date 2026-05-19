@@ -10,177 +10,240 @@ const CONFIG_PATH = path.join(__dirname, 'config_atacado.json');
 
 const app = express();
 app.use(express.json());
-app.use(express.static(__dirname));
 
+// Permitir requisições de páginas locais ou domínios externos (CORS)
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    next();
+});
+
+// Inicialização segura dos arquivos de persistência
 if (!fs.existsSync(BANCO_PATH)) fs.writeFileSync(BANCO_PATH, JSON.stringify([], null, 2));
-
-const delay = ms => new Promise(res => setTimeout(res, ms));
-
-function sincronizarRepositorioGitHub(totalNovos) {
-    console.log('📦 [GIT] Sincronizando catálogo completo com o GitHub...');
-    exec('git add . && git commit -m "Atualização Automática - Catálogo" && git push origin main', (err) => {
-        if (err) {
-            console.log('⚠️ [GIT] Repositório já estava atualizado ou sem alterações pendentes.');
-            return;
+if (!fs.existsSync(CONFIG_PATH)) {
+    const configInicial = {
+        whatsappAdmin: "5511915184857",
+        nomeLoja: "NEOPODER.SHOP",
+        urlFornecedor: "https://goatatacadoesportivo.com/",
+        lucro: {
+            tipo: "por_faixa",
+            faixas: [
+                { id: "drop", nome: "Drop / Unitário", margemFixa: 31.00 },
+                { id: "at_3", nome: "Atacado (3-9 pçs)", margemFixa: 17.00 },
+                { id: "at_10", nome: "Atacado (10-19 pçs)", margemFixa: 14.00 },
+                { id: "at_20", nome: "Atacado (20-49 pçs)", margemFixa: 12.00 },
+                { id: "at_50", nome: "Atacado (50-99 pçs)", margemFixa: 9.00 },
+                { id: "at_100", nome: "Atacado (100+ pçs)", margemFixa: 6.00 }
+            ]
         }
-        console.log('🚀 [LIVE] VITRINE DA LOJA ATUALIZADA GLOBALMENTE NO GITHUB!');
-        
-        if (totalNovos > 0) {
-            let config = {};
-            if (fs.existsSync(CONFIG_PATH)) config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
-            const numeroWhats = config.whatsappAdmin || "5511915184857"; // Fallback seguro
-            
-            const mensagem = `🔥 *NEOPODER.SHOP*\n\n🤖 Varredura COMPLETA finalizada!\n🎯 *${totalNovos} novos produtos* aguardando aprovação.`;
-            const urlWhats = `https://web.whatsapp.com/send?phone=${numeroWhats}&text=${encodeURIComponent(mensagem)}`;
-            
-            console.log('📢 [ALERTA] Abrindo o WhatsApp Web...');
-            exec(`start "" "${urlWhats}"`);
+    };
+    fs.writeFileSync(CONFIG_PATH, JSON.stringify(configInicial, null, 2));
+}
+
+// Interceptador global de falhas assíncronas para evitar quedas do servidor
+process.on('unhandledRejection', (reason) => {
+    console.error('⚠️ [PREVENÇÃO CRÍTICA] Evitada queda por rejeição assíncrona:', reason);
+});
+
+// Função auxiliar para calcular preços ajustados com base nas faixas de lucro
+function calcularPrecosAjustados(custoCof, config) {
+    const precos = {};
+    if (!config.lucro || !config.lucro.faixas) return precos;
+    config.lucro.faixas.forEach(faixa => {
+        precos[faixa.id] = parseFloat((custoCof + faixa.margemFixa).toFixed(2));
+    });
+    return precos;
+}
+
+// Sincronização automática com repositório remoto Git
+function sincronizarRepositorio() {
+    console.log('📦 [GIT] Iniciando sincronização do banco de dados...');
+    exec('git add banco_produtos.json config_atacado.json && git commit -m "Mapeamento e Ajustes de Catálogo Automático" && git push origin main', (err) => {
+        if (err) {
+            console.log('ℹ️ [GIT] Modificações salvas localmente com sucesso.');
+        } else {
+            console.log('🚀 [GITHUB] Repositório sincronizado globalmente na nuvem!');
         }
     });
 }
 
-async function varrerCatalogoCompleto() {
-    console.log('⏳ [ROBÔ] Iniciando Varredura Avançada de Catálogo Completo...');
+// 🤖 CORE DO ROBÔ: Varredura de Alta Performance e Resiliência
+async function executarVarreduraResiliente() {
+    const config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
+    console.log(`⏳ [MONITOR] Iniciando varredura em: ${config.urlFornecedor}`);
+    
     let browser;
     try {
-        if (!fs.existsSync(CONFIG_PATH)) {
-            console.error('❌ Erro: Arquivo config_atacado.json não encontrado na raiz!');
-            return;
-        }
+        let banco = JSON.parse(fs.readFileSync(BANCO_PATH, 'utf-8'));
         
-        const config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
-        let bancoExistente = JSON.parse(fs.readFileSync(BANCO_PATH, 'utf-8'));
-        let novosAdicionados = 0;
-
-        // 🔥 BLINDAGEM CONTRA O ERRO: Injeção automática da URL se ela não existir no JSON
-        const urlFornecedorSegura = config.urlFornecedor || "https://goatatacadoesportivo.com/";
-
-        browser = await puppeteer.launch({ 
-            headless: "new", 
-            args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+        browser = await puppeteer.launch({
+            headless: "new",
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-web-security', '--disable-dev-shm-usage']
         });
+
         const page = await browser.newPage();
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36');
         
-        let urlBaseCatalog = urlFornecedorSegura.replace(/\/$/, '') + '/produtos';
-        let linksProdutosCompletos = [];
-        let paginaAtual = 1;
-        let continuarBuscando = true;
+        // Otimização Estrutural: Cancela o download visual mas retém os atributos de texto/imagem do HTML
+        await page.setRequestInterception(true);
+        page.on('request', (req) => {
+            if (['image', 'stylesheet', 'font', 'media', 'analytics'].includes(req.resourceType())) {
+                req.abort();
+            } else {
+                req.continue();
+            }
+        });
 
-        console.log('🔍 [FASE 1] Coletando links de todas as páginas...');
+        // Alvo principal - Evita travar por conexões pendentes de rastreadores externos
+        try {
+            await page.goto(config.urlFornecedor, { waitUntil: 'domcontentloaded', timeout: 25000 });
+        } catch (e) {
+            console.log('⚠️ [AVISO] Tempo limite de carregamento da Home atingido, processando dados parciais estruturados...');
+        }
 
-        while (continuarBuscando) {
-            let urlPagina = `${urlBaseCatalog}/page/${paginaAtual}/`;
-            console.log(`📑 Lendo página ${paginaAtual}...`);
-            
+        // Descobre dinamicamente os links de categorias/coleções do menu
+        const linksAlvo = await page.evaluate((baseUrl) => {
+            const indesejados = ['/carrinho', '/checkout', '/conta', '/login', '/cadastro', '/contato', 'whats', 'instagram'];
+            return Array.from(document.querySelectorAll('a'))
+                .map(a => a.href)
+                .filter(href => href && href.startsWith(baseUrl))
+                .filter(href => !indesejados.some(termo => href.toLowerCase().includes(termo)));
+        }, config.urlFornecedor);
+
+        const rotasExclusivas = [...new Set(linksAlvo)].slice(0, 35);
+        console.log(`🎯 [MAPEAMENTO] Identificadas ${rotasExclusivas.length} rotas estáveis para mineração de dados.`);
+
+        for (const rota of rotasExclusivas) {
             try {
-                const response = await page.goto(urlPagina, { waitUntil: 'networkidle2', timeout: 45000 });
-                if (response.status() === 404) break;
+                await page.goto(rota, { waitUntil: 'domcontentloaded', timeout: 15000 });
+                
+                const rawProdutos = await page.evaluate(() => {
+                    const extraidos = [];
+                    const seletoresCartao = document.querySelectorAll('.product-item, .produto, .card, [class*="product"], [class*="produto"], li');
+                    
+                    seletoresCartao.forEach(card => {
+                        const linkEl = card.querySelector('a');
+                        if (!linkEl) return;
 
-                const linksDaPagina = await page.evaluate(() => {
-                    return Array.from(document.querySelectorAll('a'))
-                        .map(a => a.href)
-                        .filter(href => href.includes('/produtos/') || href.includes('/produto/'))
-                        .filter(href => !href.includes('/page/'));
+                        const nome = card.querySelector('h1, h2, h3, .title, .name, [class*="name"], [class*="titulo"]')?.innerText?.trim();
+                        
+                        // Captura inteligível de preços contendo R$
+                        let precoRaw = card.querySelector('.price, .preco, [class*="price"], [class*="preco"]')?.innerText?.trim();
+                        if (!precoRaw || !precoRaw.includes('R$')) {
+                            const todosFilhos = card.querySelectorAll('*');
+                            for (let filho of todosFilhos) {
+                                if (filho.children.length === 0 && filho.innerText?.includes('R$')) {
+                                    precoRaw = filho.innerText.trim();
+                                    break;
+                                }
+                            }
+                        }
+
+                        // Mineração profunda de links de imagens na nuvem (previne Lazy Loading)
+                        const imgEl = card.querySelector('img');
+                        let imgUrl = '';
+                        if (imgEl) {
+                            imgUrl = imgEl.getAttribute('data-src') || 
+                                     imgEl.getAttribute('data-lazy-src') || 
+                                     imgEl.getAttribute('data-original') || 
+                                     imgEl.src || '';
+                        }
+
+                        const textoInterno = card.innerText?.toLowerCase() || '';
+                        const esgotado = textoInterno.includes('esgotado') || textoInterno.includes('sem estoque');
+
+                        if (nome && precoRaw && nome.length > 4) {
+                            extraidos.push({ nome, precoRaw, imgUrl, esgotado });
+                        }
+                    });
+                    return extraidos;
                 });
 
-                if (!linksDaPagina || linksDaPagina.length === 0) break;
+                // Tratamento e higienização dos dados extraídos
+                rawProdutos.forEach(prod => {
+                    // Sanitização do preço string para Float numérico puro
+                    const precoNumerico = parseFloat(prod.precoRaw.replace(/[^\d,.]/g, '').replace('.', '').replace(',', '.'));
+                    if (isNaN(precoNumerico) || precoNumerico <= 0) return;
 
-                linksProdutosCompletos.push(...linksDaPagina);
-                paginaAtual++;
-                if (paginaAtual > 40) break; 
-                await delay(1000);
-            } catch (errPage) {
-                continuarBuscando = false;
+                    const idUnico = Buffer.from(prod.nome).toString('base64').substring(0, 12);
+                    const indiceExistente = banco.findIndex(p => p.id === idUnico);
+
+                    // Categorização Automática de Retaguarda
+                    let categoria = "Camisas de Time";
+                    const min = prod.nome.toLowerCase();
+                    if (min.includes('corta vento') || min.includes('jaqueta')) categoria = "Corta-Ventos";
+                    if (min.includes('infantil') || min.includes('kit')) categoria = "Kits Infantis";
+                    if (min.includes('feminina') || min.includes('fem')) categoria = "Modelos Femininos";
+                    if (min.includes('polo') || min.includes('casual')) categoria = "Polos / Casuais";
+
+                    const precosAtacadoCalculados = calcularPrecosAjustados(precoNumerico, config);
+
+                    if (indiceExistente === -1) {
+                        // Inserção de novo produto mapeado
+                        banco.push({
+                            id: idUnico,
+                            nome: prod.nome,
+                            img: prod.imgUrl || 'https://via.placeholder.com/400x500?text=Imagem+Nuvem',
+                            custo: precoNumerico,
+                            precosAtacado: precosAtacadoCalculados,
+                            categoria: categoria,
+                            esgotado: prod.esgotado,
+                            status: "ativo"
+                        });
+                    } else {
+                        // Atualiza dinamicamente mantendo customizações manuais se necessário
+                        banco[indiceExistente].custo = precoNumerico;
+                        banco[indiceExistente].precosAtacado = precosAtacadoCalculados;
+                        banco[indiceExistente].esgotado = prod.esgotado;
+                    }
+                });
+
+            } catch (errLinha) {
+                // Rota individual instável não derruba o processamento do resto do catálogo
             }
         }
 
-        const linksUnicos = [...new Set(linksProdutosCompletos)];
-        console.log(`🎯 [FASE 1 CONCLUÍDA] Total: ${linksUnicos.length} produtos localizados!`);
+        fs.writeFileSync(BANCO_PATH, JSON.stringify(banco, null, 2));
+        console.log(`✅ [SUCESSO] Varredura finalizada. Total em base: ${banco.length} itens.`);
+        sincronizarRepositorio();
 
-        console.log('🚀 [FASE 2] Extração detalhada de preços e estoques...');
-        let contador = 1;
-        for (const link of linksUnicos) {
-            console.log(`[${contador}/${linksUnicos.length}] Lendo dados...`);
-            contador++;
-
-            try {
-                await page.goto(link, { waitUntil: 'domcontentloaded', timeout: 35000 });
-                
-                const payload = await page.evaluate(() => {
-                    const nome = document.querySelector('h1, .product-name, .js-product-name')?.innerText?.trim();
-                    const precoRaw = document.querySelector('.js-price-display, .product-price, #price_display, .js-compare-price-display')?.innerText;
-                    const imgEl = document.querySelector('.js-product-slide-img, .product-image img, .js-cloudzoom-image, .js-product-thumb-img');
-                    let img = imgEl ? (imgEl.src || imgEl.getAttribute('data-src') || imgEl.getAttribute('src')) : '';
-                    
-                    const btnTexto = document.querySelector('input[type="submit"], .js-prod-submit-form, .js-addtocart-button')?.value?.toLowerCase() || document.querySelector('.js-prod-submit-form')?.innerText?.toLowerCase() || '';
-                    const esgotado = btnTexto.includes('sem') || btnTexto.includes('esgotado') || btnTexto.includes('indisponível');
-
-                    let categoria = "Camisas de Time";
-                    if (nome?.toLowerCase().includes('corta vento') || nome?.toLowerCase().includes('windbreaker')) categoria = "Corta-Ventos";
-                    if (nome?.toLowerCase().includes('infantil') || nome?.toLowerCase().includes('kit')) categoria = "Kits Infantis";
-                    if (nome?.toLowerCase().includes('feminina') || nome?.toLowerCase().includes('refe')) categoria = "Modelos Femininos";
-
-                    return { nome, precoRaw, img, esgotado, categoria };
-                });
-
-                if (!payload.nome || !payload.precoRaw) continue;
-
-                const precoCusto = parseFloat(payload.precoRaw.replace(/[^\d,.]/g, '').replace('.', '').replace(',', '.'));
-                if (isNaN(precoCusto) || precoCusto <= 0) continue;
-
-                const hashId = Buffer.from(payload.nome).toString('base64').substring(0, 10);
-                const jaExiste = bancoExistente.some(p => p.id === hashId);
-
-                if (!jaExiste) {
-                    bancoExistente.push({
-                        id: hashId, nome: payload.nome, img: payload.img || 'https://via.placeholder.com/400x500?text=Sem+Foto',
-                        custo: precoCusto, categoria: payload.categoria, esgotado: payload.esgotado,
-                        tamanhos: ["P", "M", "G", "GG"], status: "pendente"
-                    });
-                    novosAdicionados++;
-                } else {
-                    const idx = bancoExistente.findIndex(p => p.id === hashId);
-                    bancoExistente[idx].custo = precoCusto;
-                    bancoExistente[idx].esgotado = payload.esgotado;
-                }
-                await delay(300);
-            } catch (errorNoLink) {}
-        }
-
-        fs.writeFileSync(BANCO_PATH, JSON.stringify(bancoExistente, null, 2));
-        console.log(`💾 ${novosAdicionados} novos itens retidos para aprovação.`);
-        sincronizarRepositorioGitHub(novosAdicionados);
-
-    } catch (err) {
-        console.error('❌ Erro Crítico:', err);
+    } catch ( erroGlobal ) {
+        console.error('❌ Erro crítico no processo do robô:', erroGlobal);
     } finally {
         if (browser) await browser.close();
     }
 }
 
+// 🌐 ROTAS DA API INTERNA (CRUD COMPLETO PARA O ADMIN)
 app.get('/api/dados', (req, res) => {
-    if (!fs.existsSync(BANCO_PATH)) return res.json({ produtos: [], config: {} });
     const produtos = JSON.parse(fs.readFileSync(BANCO_PATH, 'utf-8'));
-    const config = fs.existsSync(CONFIG_PATH) ? JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8')) : {};
+    const config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
     res.json({ produtos, config });
 });
 
-app.post('/api/ajuste-manual', (req, res) => {
-    const { id, novoPreco, status } = req.body;
-    let produtos = JSON.parse(fs.readFileSync(BANCO_PATH, 'utf-8'));
-    const idx = produtos.findIndex(p => p.id === id);
-    if (idx !== -1) {
-        if (novoPreco) produtos[idx].custo = parseFloat(novoPreco);
-        if (status) produtos[idx].status = status; 
-        fs.writeFileSync(BANCO_PATH, JSON.stringify(produtos, null, 2));
-        sincronizarRepositorioGitHub(0);
-        return res.json({ success: true });
+// Rota para salvar alterações gerais ou novos produtos criados manualmente
+app.post('/api/salvar', (req, res) => {
+    try {
+        const { produtos, config } = req.body;
+        if (produtos) fs.writeFileSync(BANCO_PATH, JSON.stringify(produtos, null, 2));
+        if (config) fs.writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2));
+        sincronizarRepositorio();
+        res.json({ success: true, message: "Dados persistidos com sucesso global!" });
+    } catch (err) {
+        res.status(500).json({ error: "Falha ao gravar arquivos de dados." });
     }
-    res.status(404).json({ error: "Produto não localizado." });
+});
+
+// Rota de trigger manual para o robô via interface administrativa
+app.post('/api/varrer', (req, res) => {
+    executarVarreduraResiliente();
+    res.json({ success: true, message: "Varredura iniciada em segundo plano!" });
 });
 
 app.listen(PORT, () => {
-    console.log(`🔥 SISTEMA BLINDADO ATIVO NA PORTA ${PORT}`);
-    varrerCatalogoCompleto();
+    console.log(`===========================================================`);
+    console.log(`⚡ API ENDPOINTS DO CATÁLOGO ATIVOS NA PORTA DE REDE: ${PORT}`);
+    console.log(`===========================================================`);
+    executarVarreduraResiliente();
 });
