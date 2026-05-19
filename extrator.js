@@ -23,6 +23,7 @@ const CONFIG_PATH = path.join(__dirname, 'config_atacado.json');
 
 const app = express();
 app.use(express.json());
+app.use(express.static(__dirname));
 
 // Permitir requisições de páginas locais ou domínios externos (CORS)
 app.use((req, res, next) => {
