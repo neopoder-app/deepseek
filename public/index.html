@@ -1,204 +1,84 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel NEOPODER.SHOP</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>NEOPODER.SHOP - Atacado e Dropshipping</title>
     <style>
-        body { background-color: #0f172a; color: #f8fafc; }
-        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid #334155; }
+        /* ESTILOS BÁSICOS (CSS EMBUTIDO PARA FACILITAR) */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f4f4; color: #333; }
+        
+        /* CABEÇALHO */
+        header { background-color: #111; padding: 20px; text-align: center; color: white; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+        .logo-container img { max-height: 50px; }
+        .menu { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .menu a { color: white; text-decoration: none; font-weight: bold; cursor: pointer; padding: 5px 10px; border-radius: 5px; }
+        .menu a:hover { background-color: #333; }
+        .cart-icon { background-color: #25D366; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; color: black; }
+
+        /* GRADE DE PRODUTOS */
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .produto-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        .produto-card img { max-width: 100%; border-radius: 5px; }
+        .produto-card h3 { font-size: 16px; margin: 10px 0; }
+        .preco-destaque { font-size: 20px; font-weight: bold; color: #d9534f; margin-bottom: 10px; }
+        .btn-comprar { background-color: #111; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .btn-comprar:hover { background-color: #333; }
+
+        /* CARRINHO LATERAL */
+        .carrinho-lateral { position: fixed; top: 0; right: -400px; width: 350px; height: 100%; background: white; box-shadow: -2px 0 5px rgba(0,0,0,0.2); transition: 0.3s; z-index: 200; display: flex; flex-direction: column; }
+        .carrinho-lateral.aberto { right: 0; }
+        .carrinho-header { background: #111; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .fechar-carrinho { cursor: pointer; font-size: 20px; font-weight: bold; }
+        .carrinho-itens { flex: 1; overflow-y: auto; padding: 15px; }
+        .item-carrinho { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; align-items: center; }
+        .carrinho-footer { padding: 15px; background: #f9f9f9; border-top: 1px solid #ddd; }
+        .btn-whatsapp { background-color: #25D366; color: white; text-align: center; display: block; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 10px; }
+        .info-tier { font-size: 12px; color: #555; margin-bottom: 10px; background: #fff3cd; padding: 10px; border-radius: 5px; border: 1px solid #ffeeba;}
     </style>
 </head>
-<body class="font-sans antialiased min-h-screen">
+<body>
 
-    <header class="bg-slate-900 border-b border-emerald-500 p-4 shadow-lg flex justify-between items-center sticky top-0 z-50">
-        <div class="flex items-center gap-3">
-            <img src="/NEOPODER.SHOP.png" alt="Logo" class="h-10 w-10 object-contain bg-white rounded-full p-1" onerror="this.style.display='none'">
-            <div>
-                <h1 class="text-2xl font-black text-emerald-400 tracking-wider">NEOPODER.SHOP</h1>
-                <p class="text-xs text-slate-400 font-mono tracking-widest uppercase">Sistema de Gestão de Catálogo</p>
-            </div>
+    <header>
+        <div class="logo-container">
+            <img src="NEOPODER.SHOP.png" alt="NEOPODER.SHOP">
         </div>
-        <div class="flex gap-4 items-center">
-            <span id="status-robo" class="text-xs font-bold px-3 py-1 bg-slate-800 text-emerald-400 border border-emerald-500 rounded-full animate-pulse">
-                Robô: Em Espera
-            </span>
-            <button onclick="forcarVarredura()" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold py-2 px-4 rounded shadow transition">
-                🔄 Forçar Atualização do Robô
-            </button>
+        <nav class="menu">
+            <a onclick="filtrar('Todas')">Todas</a>
+            <a onclick="filtrar('Camisas de Time')">Camisas de Time</a>
+            <a onclick="filtrar('Kits Infantis')">Kits Infantis</a>
+            <a onclick="filtrar('Modelos Femininos')">Modelos Femininos</a>
+            <a onclick="filtrar('Chuteiras')">Chuteiras</a>
+            <a onclick="filtrar('Camisas Retrô')">Camisas Retrô</a>
+        </nav>
+        <div class="cart-icon" onclick="toggleCarrinho()">
+            🛒 Carrinho (<span id="contador-carrinho">0</span>)
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto p-6 space-y-6">
-        
-        <div id="alerta-whatsapp" class="hidden glass-panel border-l-4 border-l-green-500 p-4 rounded-lg flex justify-between items-center">
-            <div>
-                <h3 class="text-green-400 font-bold text-lg">Novos Produtos Encontrados!</h3>
-                <p class="text-sm text-slate-300">O robô adicionou novos itens ao catálogo. Clique para notificar o administrador.</p>
+    <div class="container">
+        <div class="grid-produtos" id="grid-produtos">
             </div>
-            <button onclick="enviarAlertaWhatsApp()" class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded-lg shadow-lg flex items-center gap-2 transition">
-                💬 Enviar para WhatsApp
-            </button>
+    </div>
+
+    <div class="carrinho-lateral" id="carrinho-lateral">
+        <div class="carrinho-header">
+            <h2>Seu Pedido</h2>
+            <span class="fechar-carrinho" onclick="toggleCarrinho()">X</span>
         </div>
-
-        <div class="glass-panel rounded-xl p-6 shadow-2xl">
-            <div class="flex justify-between items-end mb-6 border-b border-slate-700 pb-4">
-                <div>
-                    <h2 class="text-xl font-bold text-white">Catálogo de Produtos</h2>
-                    <p class="text-sm text-slate-400">Altere preços, categorias ou apague itens diretamente na tabela.</p>
-                </div>
-                <input type="text" id="pesquisa" onkeyup="renderizarTabela()" placeholder="Pesquisar produto..." class="bg-slate-800 border border-slate-600 text-white text-sm rounded-lg block p-2.5 w-64 focus:ring-emerald-500 focus:border-emerald-500">
+        <div class="carrinho-itens" id="carrinho-itens">
             </div>
-
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead class="text-xs text-slate-400 uppercase bg-slate-800/50">
-                        <tr>
-                            <th class="px-4 py-3 rounded-tl-lg">Imagem</th>
-                            <th class="px-4 py-3">Produto</th>
-                            <th class="px-4 py-3">Categoria</th>
-                            <th class="px-4 py-3 text-center">Custo (R$)</th>
-                            <th class="px-4 py-3 text-center">Preço Venda (+17)</th>
-                            <th class="px-4 py-3 text-center rounded-tr-lg">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody id="corpo_tabela" class="divide-y divide-slate-700">
-                        </tbody>
-                </table>
+        <div class="carrinho-footer">
+            <div class="info-tier" id="info-tier">
+                Modalidade atual: <strong>Calculando...</strong>
             </div>
+            <h3>Total: R$ <span id="total-carrinho">0,00</span></h3>
+            <a href="#" class="btn-whatsapp" id="btn-whatsapp" onclick="finalizarPedido()">📲 Enviar Pedido via WhatsApp</a>
         </div>
-    </main>
+    </div>
 
-    <script>
-        let produtos = [];
-        let config = {};
-        const whatsappAdmin = "5511915184857";
-
-        async function carregarDados() {
-            try {
-                const res = await fetch('/api/dados');
-                const dados = await res.json();
-                produtos = dados.produtos || [];
-                config = dados.config || {};
-                
-                // Mostra alerta se houver produtos marcados como "pendente"
-                const novos = produtos.filter(p => p.status === 'pendente').length;
-                if(novos > 0) {
-                    document.getElementById('alerta-whatsapp').classList.remove('hidden');
-                } else {
-                    document.getElementById('alerta-whatsapp').classList.add('hidden');
-                }
-
-                renderizarTabela();
-            } catch (e) {
-                console.error("Erro ao carregar os dados", e);
-            }
-        }
-
-        function renderizarTabela() {
-            const corpo = document.getElementById('corpo_tabela');
-            const termo = document.getElementById('pesquisa').value.toLowerCase();
-            corpo.innerHTML = '';
-
-            const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
-
-            if(filtrados.length === 0) {
-                corpo.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-500">Nenhum produto encontrado ou catálogo vazio.</td></tr>`;
-                return;
-            }
-
-            filtrados.forEach(p => {
-                const isPendente = p.status === 'pendente';
-                const tr = document.createElement('tr');
-                tr.className = `hover:bg-slate-800/50 transition ${isPendente ? 'bg-emerald-900/20' : ''}`;
-                tr.innerHTML = `
-                    <td class="px-4 py-3">
-                        <img src="${p.img}" class="w-12 h-12 object-cover rounded border border-slate-600 bg-slate-800">
-                    </td>
-                    <td class="px-4 py-3 font-semibold text-white max-w-[200px] truncate" title="${p.nome}">
-                        ${isPendente ? '<span class="text-[10px] bg-emerald-500 text-slate-900 px-1 rounded mr-1">NOVO</span>' : ''}
-                        ${p.nome}
-                    </td>
-                    <td class="px-4 py-3">
-                        <select onchange="atualizarCampo('${p.id}', 'categoria', this.value)" class="bg-slate-700 border border-slate-600 text-white text-xs rounded p-1 w-full">
-                            <option value="${p.categoria}" selected>${p.categoria}</option>
-                            <option value="Camisas de Time">Camisas de Time</option>
-                            <option value="Corta-Ventos">Corta-Ventos</option>
-                            <option value="Kits Infantis">Kits Infantis</option>
-                            <option value="Modelos Femininos">Modelos Femininos</option>
-                        </select>
-                    </td>
-                    <td class="px-4 py-3 text-center">
-                        <input type="number" step="0.01" value="${p.custo}" onchange="atualizarCampo('${p.id}', 'custo', this.value)" class="bg-slate-700 border border-slate-600 text-white text-xs font-mono rounded p-1 w-20 text-center">
-                    </td>
-                    <td class="px-4 py-3 text-center font-mono font-bold text-emerald-400">
-                        R$ ${(p.custo + 17).toFixed(2)}
-                    </td>
-                    <td class="px-4 py-3 text-center">
-                        <button onclick="removerProduto('${p.id}')" class="text-red-400 hover:text-red-300 bg-red-900/30 px-2 py-1 rounded text-xs font-bold transition">Apagar</button>
-                    </td>
-                `;
-                corpo.appendChild(tr);
-            });
-        }
-
-        async function atualizarCampo(id, campo, valor) {
-            const idx = produtos.findIndex(p => p.id === id);
-            if(idx !== -1) {
-                if(campo === 'custo') produtos[idx].custo = parseFloat(valor);
-                else produtos[idx][campo] = valor;
-                
-                produtos[idx].status = 'ativo'; // Remove o status de pendente ao editar
-                await salvarNoServidor();
-            }
-        }
-
-        async function removerProduto(id) {
-            if(confirm('Remover permanentemente este produto do catálogo?')) {
-                produtos = produtos.filter(p => p.id !== id);
-                await salvarNoServidor();
-            }
-        }
-
-        async function salvarNoServidor() {
-            await fetch('/api/salvar', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ produtos })
-            });
-            carregarDados();
-        }
-
-        async function forcarVarredura() {
-            const btn = document.getElementById('status-robo');
-            btn.className = "text-xs font-bold px-3 py-1 bg-blue-900 text-blue-400 border border-blue-500 rounded-full animate-pulse";
-            btn.innerText = "Robô: A Trabalhar...";
-            
-            alert('O robô iniciou a extração no fornecedor. Isto pode demorar 1 a 2 minutos. O painel atualizará sozinho.');
-            
-            await fetch('/api/varrer', { method: 'POST' });
-            
-            setTimeout(() => {
-                btn.className = "text-xs font-bold px-3 py-1 bg-slate-800 text-emerald-400 border border-emerald-500 rounded-full";
-                btn.innerText = "Robô: Em Espera";
-                carregarDados();
-            }, 60000); // Tenta atualizar a tabela após 1 minuto
-        }
-
-        function enviarAlertaWhatsApp() {
-            const pendentes = produtos.filter(p => p.status === 'pendente').length;
-            const msg = `🔥 *NEOPODER.SHOP*\n\nRobô finalizou a extração!\n🎯 Encontrámos *${pendentes} novos produtos*.\nAceda ao painel administrativo para verificar as categorias e preços.`;
-            const url = `https://wa.me/${whatsappAdmin}?text=${encodeURIComponent(msg)}`;
-            
-            // Marca como ativos para o aviso não voltar a aparecer até à próxima extração
-            produtos.forEach(p => { if(p.status === 'pendente') p.status = 'ativo'; });
-            salvarNoServidor();
-            
-            window.open(url, '_blank');
-        }
-
-        window.onload = carregarDados;
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

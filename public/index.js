@@ -128,5 +128,6 @@ async function iniciarExtracaoRobusta() {
 
 app.listen(PORT, () => {
     console.log(`🚀 Servidor NEOPODER ativo na porta ${PORT}`);
-    iniciarExtracaoRobusta(); // Faz uma leitura inicial quando o servidor arranca
+    // Comente a linha abaixo:
+    // iniciarExtracaoRobusta(); 
 });
