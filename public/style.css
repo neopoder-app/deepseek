@@ -10,11 +10,17 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 20px 40px;
-  background: #000;
+  background: #000000;
+  /* --- ADICIONADO: Efeito Neon Azul --- */
+  border-bottom: 3px solid #00d2ff;
+  box-shadow: 0 4px 20px rgba(0, 210, 255, 0.4);
 }
 
 .logo {
-  height: 50px;
+  height: 90px; /* Aumentado de 50px para 90px */
+  width: auto;
+  /* --- ADICIONADO: Oculta o fundo preto da imagem --- */
+  mix-blend-mode: screen; 
 }
 
 /* HERO */
@@ -80,4 +86,17 @@ body {
   padding: 15px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+/* --- ADICIONADO: Estilos do Banner --- */
+.banner-destaque {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.banner-destaque img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  display: block;
 }

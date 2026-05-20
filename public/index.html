@@ -10,12 +10,35 @@
         body { background-color: #f4f4f4; color: #333; }
         
         /* CABEÇALHO */
-        header { background-color: #111; padding: 20px; text-align: center; color: white; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
-        .logo-container img { max-height: 50px; }
+        header { 
+            background-color: #000000; /* Forçado preto absoluto para a logo */
+            padding: 20px; 
+            text-align: center; 
+            color: white; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            /* --- LINHA NEON ADICIONADA --- */
+            border-bottom: 3px solid #00d2ff;
+            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.4);
+        }
+        /* --- LOGO AJUSTADA --- */
+        .logo-container img { 
+            max-height: 90px; 
+            mix-blend-mode: screen; /* Remove fundo preto da imagem */
+        }
+        
         .menu { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
         .menu a { color: white; text-decoration: none; font-weight: bold; cursor: pointer; padding: 5px 10px; border-radius: 5px; }
         .menu a:hover { background-color: #333; }
         .cart-icon { background-color: #25D366; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; color: black; }
+
+        /* --- BANNER ADICIONADO --- */
+        .banner-destaque { width: 100%; margin-bottom: 20px; }
+        .banner-destaque img { width: 100%; max-height: 350px; object-fit: cover; display: block; }
 
         /* GRADE DE PRODUTOS */
         .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
@@ -57,6 +80,10 @@
             🛒 Carrinho (<span id="contador-carrinho">0</span>)
         </div>
     </header>
+
+    <section class="banner-destaque">
+        <img src="https://via.placeholder.com/1200x350/111111/00d2ff?text=COLOQUE+SEU+BANNER+AQUI" alt="Banner Principal da Loja">
+    </section>
 
     <div class="container">
         <div class="grid-produtos" id="grid-produtos">
