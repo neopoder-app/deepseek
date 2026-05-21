@@ -3,106 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - NEOPODER.SHOP</title>
+    <title>Catálogo Oficial - NEOPODER.SHOP</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-950 text-gray-100 font-sans pb-20">
 
-    <header class="bg-blue-900 p-4 shadow-xl border-b border-yellow-500 sticky top-0 z-40">
+    <header class="bg-black p-4 shadow-[0_4px_20px_rgba(59,130,246,0.15)] border-b border-blue-500 sticky top-0 z-40">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
+            
             <div class="flex items-center gap-3">
-                <div class="h-16 md:h-24 flex items-center justify-center font-black text-2xl md:text-3xl text-yellow-400 tracking-wide">
-                    NEOPODER.SHOP
+                <img src="URL_DA_SUA_IMAGEM_AQUI" alt="NEOPODER.SHOP" class="h-12 md:h-16 object-contain hidden" onerror="this.style.display='none'; document.getElementById('logo_text').classList.remove('hidden')">
+                
+                <div id="logo_text" class="font-black text-2xl md:text-3xl text-blue-500 tracking-wider drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
+                    NEOPODER<span class="text-white drop-shadow-none">.SHOP</span>
                 </div>
             </div>
-            <a href="https://wa.me/5511915184857" target="_blank" class="bg-green-600 hover:bg-green-500 text-white text-xs md:text-sm px-4 py-2 rounded-full font-bold transition-colors shadow-lg flex items-center gap-2">
-                <span>Dúvidas? WhatsApp</span>
+
+            <a href="https://wa.me/5511915184857" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white text-xs md:text-sm px-5 py-2.5 rounded-lg font-bold transition-all shadow-[0_0_15px_rgba(59,130,246,0.6)] flex items-center gap-2">
+                <span>Suporte WhatsApp</span>
             </a>
         </div>
     </header>
 
     <section class="w-full bg-gray-900 border-b border-gray-800">
-        
         <div class="hidden md:block w-full">
-            <img src="https://via.placeholder.com/1920x500?text=BANNER+DESKTOP+(1920x500)" alt="Banner Ofertas Desktop" class="w-full h-auto object-cover">
+            <img src="https://via.placeholder.com/1920x500/000000/3b82f6?text=BANNER+DESKTOP+NEOPODER" alt="Destaques Desktop" class="w-full h-auto object-cover">
         </div>
-
         <div class="block md:hidden w-full">
-            <img src="https://via.placeholder.com/1080x1080?text=BANNER+MOBILE+(1080x1080)" alt="Banner Ofertas Mobile" class="w-full h-auto object-cover">
+            <img src="https://via.placeholder.com/1080x1080/000000/3b82f6?text=BANNER+MOBILE+NEOPODER" alt="Destaques Mobile" class="w-full h-auto object-cover">
         </div>
-
     </section>
-    <main class="max-w-6xl mx-auto p-4 mt-4">
+
+    <main class="max-w-6xl mx-auto p-4 mt-6">
         <div class="flex justify-between items-end mb-6">
-            <h2 class="text-xl md:text-2xl font-bold text-gray-200 border-l-4 border-yellow-500 pl-3">Lançamentos & Ofertas</h2>
-            <span id="contador_produtos" class="text-xs font-mono text-gray-400 bg-gray-800 px-2 py-1 rounded">Carregando...</span>
+            <h2 class="text-xl md:text-2xl font-black text-white uppercase tracking-wide border-l-4 border-blue-500 pl-3 drop-shadow-[0_0_5px_rgba(59,130,246,0.5)]">
+                Catálogo de Produtos
+            </h2>
+            <span id="contador_produtos" class="text-xs font-mono text-blue-400 bg-gray-900 border border-gray-800 px-3 py-1 rounded">Carregando...</span>
         </div>
 
-        <div id="grid_produtos" class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+        <div id="grid_produtos" class="grid grid-cols-2 md:grid-cols-4 gap-4">
             </div>
     </main>
 
-    <div id="modal_produto" class="fixed inset-0 bg-black/80 z-50 hidden flex-col justify-end md:justify-center items-center">
+    <div id="modal_produto" class="fixed inset-0 bg-black/90 z-50 hidden flex-col justify-end md:justify-center items-center p-0 md:p-4 animate-fade-in">
         
-        <div class="bg-gray-900 w-full md:w-[500px] max-h-[90vh] md:max-h-[85vh] rounded-t-2xl md:rounded-2xl border border-gray-700 shadow-2xl flex flex-col relative overflow-hidden">
+        <div class="bg-gray-900 w-full md:w-[550px] max-h-[92vh] md:max-h-[85vh] rounded-t-2xl md:rounded-xl border border-gray-800 shadow-[0_0_30px_rgba(0,0,0,0.8)] flex flex-col relative overflow-hidden">
             
-            <button onclick="fecharModal()" class="absolute top-3 right-3 bg-red-600 hover:bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg z-10 shadow">
+            <button onclick="fecharModal()" class="absolute top-4 right-4 bg-gray-800 hover:bg-gray-700 text-white rounded-full w-9 h-9 flex items-center justify-center font-bold text-xl z-10 transition-colors border border-gray-700">
                 &times;
             </button>
 
-            <div id="conteudo_modal" class="p-5 overflow-y-auto custom-scrollbar">
+            <div class="p-6 overflow-y-auto flex-1">
+                
+                <div class="flex gap-4 mb-6">
+                    <div class="w-24 h-24 bg-white rounded-lg p-1 flex-shrink-0 border border-gray-800">
+                        <img id="modal_img" src="" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <span id="modal_categoria" class="text-[10px] bg-blue-900/30 text-blue-400 border border-blue-500/30 px-2.5 py-1 rounded font-bold uppercase tracking-wider mb-2 inline-block"></span>
+                        <h2 id="modal_nome" class="text-base font-bold text-white leading-tight"></h2>
+                    </div>
                 </div>
 
-            <div class="p-4 bg-gray-950 border-t border-gray-800">
-                <button onclick="fecharModal()" class="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-lg font-bold text-sm transition-colors">
-                    Voltar ao Catálogo
+                <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 mb-4">
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Selecione a Quantidade de Peças:</label>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center bg-gray-900 border border-gray-700 rounded-lg overflow-hidden shadow-inner">
+                            <button onclick="alterarQuantidade(-1)" class="px-4 py-2 bg-gray-850 hover:bg-gray-800 text-white font-black text-lg transition-colors">-</button>
+                            <input type="number" id="input_qtd" value="1" min="1" onchange="validarEAtualizarQtd()" class="w-16 text-center bg-transparent border-none text-white font-mono font-bold text-lg focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                            <button onclick="alterarQuantidade(1)" class="px-4 py-2 bg-gray-850 hover:bg-gray-800 text-white font-black text-lg transition-colors">+</button>
+                        </div>
+                        <div class="text-xs text-gray-400 font-medium">
+                            Permite mesclar modelos e tamanhos diferentes no pedido final.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-950 p-5 rounded-xl border border-gray-800 space-y-3 shadow-inner">
+                    <div class="flex justify-between items-center text-sm border-b border-gray-900 pb-2">
+                        <span class="text-gray-400">Preço Unitário na Faixa:</span>
+                        <span id="calc_preco_unitario" class="font-mono font-bold text-white text-base">R$ 0,00</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm border-b border-gray-900 pb-2">
+                        <span class="text-gray-400">Subtotal do Item:</span>
+                        <span id="calc_subtotal" class="font-mono font-black text-blue-500 drop-shadow-[0_0_3px_rgba(59,130,246,0.8)] text-lg">R$ 0,00</span>
+                    </div>
+                    
+                    <div id="bloco_economia" class="bg-green-950/40 border border-green-800/60 p-3 rounded-lg text-center hidden">
+                        <span class="text-xs text-green-400 font-semibold block mb-0.5">🔥 VANTAGEM DE ATACADO</span>
+                        <span id="calc_economia_total" class="text-sm font-black text-green-400 tracking-wide">Você economizou R$ 0,00</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="p-4 bg-gray-950 border-t border-gray-800 flex flex-col gap-2">
+                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 rounded-xl shadow-[0_0_15px_rgba(22,163,74,0.4)] transition-all text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                    Confirmar e Adicionar ao WhatsApp
+                </button>
+                <button onclick="fecharModal()" class="w-full bg-black hover:bg-gray-900 text-white border border-gray-700 py-2.5 rounded-lg font-bold text-xs transition-colors">
+                    Continuar Navegando
                 </button>
             </div>
+
         </div>
     </div>
 
     <script>
         let produtosCatalogo = [];
+        let configAtacado = {};
+        let produtoAtivo = null;
+        let quantidadeAtiva = 1;
 
-        async function carregarProdutos() {
+        async function inicializarApp() {
             try {
-                // Tenta puxar da API (que contém os produtos mais atualizados)
                 const res = await fetch('/api/dados');
                 const dados = await res.json();
                 produtosCatalogo = dados.produtos.filter(p => p.status === "ativo");
+                configAtacado = dados.config;
                 renderizarGrid();
             } catch (erro) {
-                console.error("Erro ao carregar catálogo:", erro);
-                document.getElementById('grid_produtos').innerHTML = `<p class="col-span-full text-center text-red-400">Falha ao carregar os produtos. Atualize a página.</p>`;
+                console.error("Erro ao carregar dados:", erro);
+                document.getElementById('grid_produtos').innerHTML = `<p class="col-span-full text-center text-red-400">Falha ao conectar ao servidor.</p>`;
             }
         }
 
         function renderizarGrid() {
             const grid = document.getElementById('grid_produtos');
-            const contador = document.getElementById('contador_produtos');
+            document.getElementById('contador_produtos').innerText = `${produtosCatalogo.length} itens ativos`;
             grid.innerHTML = '';
-            
-            contador.innerText = `${produtosCatalogo.length} itens`;
 
             produtosCatalogo.forEach(p => {
-                const precoDrop = p.precosAtacado && p.precosAtacado.drop ? p.precosAtacado.drop.toFixed(2) : '0.00';
+                const precoBase = p.precosAtacado && p.precosAtacado.drop ? p.precosAtacado.drop.toFixed(2) : '0.00';
                 
                 const card = document.createElement('div');
-                card.className = "bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow flex flex-col hover:border-yellow-500 transition-colors";
+                // Hover neon azul no cartão
+                card.className = "bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-xl flex flex-col hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-200 group";
                 card.innerHTML = `
-                    <div class="relative pb-[100%] bg-white">
-                        <img src="${p.img}" alt="${p.nome}" class="absolute top-0 left-0 w-full h-full object-contain p-2" loading="lazy">
-                        ${p.esgotado ? '<div class="absolute inset-0 bg-black/60 flex items-center justify-center"><span class="bg-red-600 text-white px-3 py-1 font-bold rounded transform -rotate-12">ESGOTADO</span></div>' : ''}
+                    <div class="relative pb-[100%] bg-white overflow-hidden border-b border-gray-800">
+                        <img src="${p.img}" alt="${p.nome}" class="absolute top-0 left-0 w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-200" loading="lazy">
+                        ${p.esgotado ? '<div class="absolute inset-0 bg-black/70 flex items-center justify-center"><span class="bg-red-600 text-white text-xs px-3 py-1.5 font-bold rounded shadow-lg transform -rotate-6">SEM ESTOQUE</span></div>' : ''}
                     </div>
-                    <div class="p-3 flex flex-col flex-grow">
-                        <span class="text-[10px] text-gray-400 uppercase font-bold tracking-wider mb-1">${p.categoria}</span>
-                        <h3 class="text-xs md:text-sm font-semibold text-white leading-tight mb-2 flex-grow">${p.nome}</h3>
-                        <div class="mt-auto">
-                            <p class="text-[10px] text-gray-400 mb-1">A partir de (Atacado)</p>
-                            <p class="text-lg font-mono font-bold text-green-400">R$ ${precoDrop}</p>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <span class="text-[9px] bg-blue-900/30 text-blue-400 border border-blue-500/30 font-bold px-2 py-0.5 rounded tracking-wider uppercase mb-2 w-max">${p.categoria}</span>
+                        <h3 class="text-xs md:text-sm font-bold text-gray-200 leading-snug mb-3 line-clamp-2 flex-grow">${p.nome}</h3>
+                        <div class="mt-auto pt-2 border-t border-gray-800">
+                            <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">A partir de</p>
+                            <p class="text-base md:text-lg font-mono font-black text-green-400">R$ ${precoBase}</p>
                         </div>
-                        <button onclick="abrirModal('${p.id}')" class="mt-3 w-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold py-2 rounded transition-colors uppercase tracking-wide">
-                            Ver Preços & Detalhes
+                        <button onclick="abrirModal('${p.id}')" class="mt-3 w-full bg-black hover:bg-gray-800 text-white border border-gray-700 text-xs font-bold py-2.5 rounded-lg transition-colors uppercase tracking-widest font-black shadow-md">
+                            Ver Opções
                         </button>
                     </div>
                 `;
@@ -111,71 +162,102 @@
         }
 
         function abrirModal(id) {
-            const p = produtosCatalogo.find(item => item.id === id);
-            if(!p) return;
+            produtoAtivo = produtosCatalogo.find(item => item.id === id);
+            if (!produtoAtivo) return;
+
+            quantidadeAtiva = 1;
+            document.getElementById('input_qtd').value = 1;
+
+            document.getElementById('modal_img').src = produtoAtivo.img;
+            document.getElementById('modal_categoria').innerText = produtoAtivo.categoria;
+            document.getElementById('modal_nome').innerText = produtoAtivo.nome;
+
+            calcularValoresAtuais();
 
             const modal = document.getElementById('modal_produto');
-            const conteudo = document.getElementById('conteudo_modal');
-            
-            const precoDrop = p.precosAtacado.drop || 0;
-
-            // Função que gera a linha da tabela de preços e calcula a economia
-            const gerarLinhaPreco = (label, valor) => {
-                if(!valor) return '';
-                const economia = precoDrop - valor;
-                let tagEconomia = '';
-                
-                if (economia > 0) {
-                    tagEconomia = `<span class="bg-green-600 text-white px-2 py-0.5 rounded text-[10px] font-bold ml-2 animate-pulse flex-shrink-0">Economizou R$ ${economia.toFixed(2)} /peça</span>`;
-                }
-
-                return `
-                    <div class="flex flex-wrap justify-between items-center py-2 border-b border-gray-800 last:border-0">
-                        <span class="text-xs font-semibold text-gray-300 w-full sm:w-auto mb-1 sm:mb-0">${label}</span>
-                        <div class="flex items-center text-sm font-mono font-bold text-white">
-                            R$ ${valor.toFixed(2)} ${tagEconomia}
-                        </div>
-                    </div>
-                `;
-            };
-
-            conteudo.innerHTML = `
-                <div class="flex gap-4 mb-4">
-                    <img src="${p.img}" class="w-24 h-24 object-cover rounded bg-white p-1 border border-gray-700">
-                    <div>
-                        <span class="text-[10px] bg-gray-800 text-yellow-400 px-2 py-1 rounded mb-1 inline-block">${p.categoria}</span>
-                        <h2 class="text-sm font-bold text-white leading-tight">${p.nome}</h2>
-                    </div>
-                </div>
-
-                <div class="bg-gray-950 p-3 rounded border border-gray-800">
-                    <h3 class="text-xs text-gray-400 mb-2 uppercase font-bold tracking-widest border-b border-gray-800 pb-2">Tabela de Preços</h3>
-                    ${gerarLinhaPreco('Varejo / Drop (Unitário)', p.precosAtacado.drop)}
-                    ${gerarLinhaPreco('Atacado (3 a 9 peças)', p.precosAtacado.at_3)}
-                    ${gerarLinhaPreco('Atacado (10 a 19 peças)', p.precosAtacado.at_10)}
-                    ${gerarLinhaPreco('Atacado (20 a 49 peças)', p.precosAtacado.at_20)}
-                    ${gerarLinhaPreco('Atacado (50 a 99 peças)', p.precosAtacado.at_50)}
-                    ${gerarLinhaPreco('Atacado (+100 peças)', p.precosAtacado.at_100)}
-                </div>
-                
-                <a href="https://wa.me/5511915184857?text=Olá, quero encomendar o produto: ${encodeURIComponent(p.nome)}" target="_blank" class="mt-4 block w-full bg-green-600 hover:bg-green-500 text-center text-white font-bold py-3 rounded-lg shadow transition-colors">
-                    Fazer Encomenda no WhatsApp
-                </a>
-            `;
-
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            document.body.style.overflow = 'hidden'; // Impede o fundo de rolar
+            document.body.style.overflow = 'hidden';
         }
 
         function fecharModal() {
             const modal = document.getElementById('modal_produto');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
-            document.body.style.overflow = 'auto'; // Libera o fundo
+            document.body.style.overflow = 'auto';
         }
 
-        window.onload = carregarProdutos;
+        function alterarQuantidade(fator) {
+            let novaQtd = quantidadeAtiva + fator;
+            if (novaQtd < 1) novaQtd = 1;
+            quantidadeAtiva = novaQtd;
+            document.getElementById('input_qtd').value = quantidadeAtiva;
+            calcularValoresAtuais();
+        }
+
+        function validarEAtualizarQtd() {
+            let val = parseInt(document.getElementById('input_qtd').value);
+            if (isNaN(val) || val < 1) val = 1;
+            quantidadeAtiva = val;
+            document.getElementById('input_qtd').value = quantidadeAtiva;
+            calcularValoresAtuais();
+        }
+
+        function obterChaveFaixa(qtd) {
+            if (qtd >= 100) return 'at_100';
+            if (qtd >= 50) return 'at_50';
+            if (qtd >= 20) return 'at_20';
+            if (qtd >= 10) return 'at_10';
+            if (qtd >= 3) return 'at_3';
+            return 'drop';
+        }
+
+        function calcularValoresAtuais() {
+            if (!produtoAtivo) return;
+
+            const chaveFaixa = obterChaveFaixa(quantidadeAtiva);
+            const precos = produtoAtivo.precosAtacado || {};
+            
+            const precoUnitario = precos[chaveFaixa] || precos['drop'] || produtoAtivo.custo;
+            const precoDropUnitario = precos['drop'] || precoUnitario;
+
+            const subtotal = precoUnitario * quantidadeAtiva;
+            const subtotalNoDrop = precoDropUnitario * quantidadeAtiva;
+            const economiaTotal = subtotalNoDrop - subtotal;
+
+            document.getElementById('calc_preco_unitario').innerText = `R$ ${precoUnitario.toFixed(2)}`;
+            document.getElementById('calc_subtotal').innerText = `R$ ${subtotal.toFixed(2)}`;
+
+            const blocoEconomia = document.getElementById('bloco_economia');
+            if (economiaTotal > 0) {
+                blocoEconomia.classList.remove('hidden');
+                document.getElementById('calc_economia_total').innerText = `Você economizou R$ ${economiaTotal.toFixed(2)}`;
+            } else {
+                blocoEconomia.classList.add('hidden');
+            }
+        }
+
+        function enviarPedidoWhatsApp() {
+            if (!produtoAtivo) return;
+
+            const chaveFaixa = obterChaveFaixa(quantidadeAtiva);
+            const precoUnitario = produtoAtivo.precosAtacado[chaveFaixa] || produtoAtivo.precosAtacado['drop'];
+            const total = precoUnitario * quantidadeAtiva;
+
+            const mensagem = `Olá, gostaria de fazer um pedido!\n\n` +
+                             `*Produto:* ${produtoAtivo.nome}\n` +
+                             `*Categoria:* ${produtoAtivo.categoria}\n` +
+                             `*Quantidade:* ${quantidadeAtiva} peça(s)\n` +
+                             `*Preço Unitário:* R$ ${precoUnitario.toFixed(2)}\n` +
+                             `*Valor Total:* R$ ${total.toFixed(2)}\n\n` +
+                             `_Obs: Desejo combinar os tamanhos/modelos para mesclar as peças no chat._`;
+
+            const adminPhone = configAtacado.whatsappAdmin || "5511915184857";
+            const urlWa = `https://wa.me/${adminPhone}?text=${encodeURIComponent(mensagem)}`;
+            window.open(urlWa, '_blank');
+        }
+
+        window.onload = inicializarApp;
     </script>
 </body>
 </html>
