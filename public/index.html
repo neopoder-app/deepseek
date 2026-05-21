@@ -8,17 +8,13 @@
 </head>
 <body class="bg-gray-950 text-gray-100 font-sans pb-20">
 
-    <header class="bg-black p-4 shadow-[0_4px_20px_rgba(59,130,246,0.15)] border-b border-blue-500 sticky top-0 z-40">
+    <header class="bg-black p-4 shadow-[0_4px_25px_rgba(59,130,246,0.25)] border-b-2 border-blue-500 sticky top-0 z-40">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            
             <div class="flex items-center gap-3">
-                <img src="URL_DA_SUA_IMAGEM_AQUI" alt="NEOPODER.SHOP" class="h-12 md:h-16 object-contain hidden" onerror="this.style.display='none'; document.getElementById('logo_text').classList.remove('hidden')">
-                
-                <div id="logo_text" class="font-black text-2xl md:text-3xl text-blue-500 tracking-wider drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
+                <div id="logo_text" class="font-black text-2xl md:text-4xl text-blue-500 tracking-wider uppercase drop-shadow-[0_0_10px_rgba(59,130,246,0.85)]">
                     NEOPODER<span class="text-white drop-shadow-none">.SHOP</span>
                 </div>
             </div>
-
             <a href="https://wa.me/5511915184857" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white text-xs md:text-sm px-5 py-2.5 rounded-lg font-bold transition-all shadow-[0_0_15px_rgba(59,130,246,0.6)] flex items-center gap-2">
                 <span>Suporte WhatsApp</span>
             </a>
@@ -41,80 +37,85 @@
             </h2>
             <span id="contador_produtos" class="text-xs font-mono text-blue-400 bg-gray-900 border border-gray-800 px-3 py-1 rounded">Carregando...</span>
         </div>
-
         <div id="grid_produtos" class="grid grid-cols-2 md:grid-cols-4 gap-4">
             </div>
     </main>
 
-    <div id="modal_produto" class="fixed inset-0 bg-black/90 z-50 hidden flex-col justify-end md:justify-center items-center p-0 md:p-4 animate-fade-in">
+    <div id="modal_produto" class="fixed inset-0 bg-black/90 z-50 hidden flex-col justify-end md:justify-center items-center p-0 md:p-4">
         
-        <div class="bg-gray-900 w-full md:w-[550px] max-h-[92vh] md:max-h-[85vh] rounded-t-2xl md:rounded-xl border border-gray-800 shadow-[0_0_30px_rgba(0,0,0,0.8)] flex flex-col relative overflow-hidden">
+        <div class="bg-gray-900 w-full md:w-[550px] max-h-[92vh] md:max-h-[85vh] rounded-t-2xl md:rounded-xl border border-blue-900 shadow-[0_0_30px_rgba(59,130,246,0.2)] flex flex-col relative overflow-hidden">
             
-            <button onclick="fecharModal()" class="absolute top-4 right-4 bg-gray-800 hover:bg-gray-700 text-white rounded-full w-9 h-9 flex items-center justify-center font-bold text-xl z-10 transition-colors border border-gray-700">
+            <button onclick="fecharModal()" class="absolute top-4 right-4 bg-gray-800 hover:bg-gray-700 text-white rounded-full w-9 h-9 flex items-center justify-center font-bold text-xl z-10 border border-gray-700">
                 &times;
             </button>
 
-            <div class="p-6 overflow-y-auto flex-1">
+            <div class="p-6 overflow-y-auto flex-1 custom-scrollbar">
                 
                 <div class="flex gap-4 mb-6">
                     <div class="w-24 h-24 bg-white rounded-lg p-1 flex-shrink-0 border border-gray-800">
                         <img id="modal_img" src="" class="w-full h-full object-contain">
                     </div>
                     <div>
-                        <span id="modal_categoria" class="text-[10px] bg-blue-900/30 text-blue-400 border border-blue-500/30 px-2.5 py-1 rounded font-bold uppercase tracking-wider mb-2 inline-block"></span>
+                        <span id="modal_categoria" class="text-[10px] bg-blue-500 text-black px-2.5 py-1 rounded font-black uppercase tracking-wider mb-2 inline-block"></span>
                         <h2 id="modal_nome" class="text-base font-bold text-white leading-tight"></h2>
                     </div>
                 </div>
 
                 <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 mb-4">
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Selecione a Quantidade de Peças:</label>
-                    <div class="flex items-center gap-4">
-                        <div class="flex items-center bg-gray-900 border border-gray-700 rounded-lg overflow-hidden shadow-inner">
-                            <button onclick="alterarQuantidade(-1)" class="px-4 py-2 bg-gray-850 hover:bg-gray-800 text-white font-black text-lg transition-colors">-</button>
-                            <input type="number" id="input_qtd" value="1" min="1" onchange="validarEAtualizarQtd()" class="w-16 text-center bg-transparent border-none text-white font-mono font-bold text-lg focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
-                            <button onclick="alterarQuantidade(1)" class="px-4 py-2 bg-gray-850 hover:bg-gray-800 text-white font-black text-lg transition-colors">+</button>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Selecione os Tamanhos:</label>
+                    
+                    <div id="container_tamanhos" class="grid grid-cols-2 gap-3">
                         </div>
-                        <div class="text-xs text-gray-400 font-medium">
-                            Permite mesclar modelos e tamanhos diferentes no pedido final.
-                        </div>
+
+                    <div class="mt-3 text-[10px] text-blue-400 font-medium bg-blue-900/20 p-2 rounded border border-blue-500/20 text-center">
+                        Total de peças selecionadas: <span id="lbl_total_pecas" class="font-bold text-white text-sm">0</span>
                     </div>
                 </div>
 
-                <div class="bg-gray-950 p-5 rounded-xl border border-gray-800 space-y-3 shadow-inner">
+                <div class="bg-gray-950 p-5 rounded-xl border border-gray-800 space-y-3">
                     <div class="flex justify-between items-center text-sm border-b border-gray-900 pb-2">
-                        <span class="text-gray-400">Preço Unitário na Faixa:</span>
+                        <span class="text-gray-400">Preço Unitário (Baseado no total):</span>
                         <span id="calc_preco_unitario" class="font-mono font-bold text-white text-base">R$ 0,00</span>
                     </div>
                     <div class="flex justify-between items-center text-sm border-b border-gray-900 pb-2">
-                        <span class="text-gray-400">Subtotal do Item:</span>
-                        <span id="calc_subtotal" class="font-mono font-black text-blue-500 drop-shadow-[0_0_3px_rgba(59,130,246,0.8)] text-lg">R$ 0,00</span>
+                        <span class="text-gray-400">Subtotal do Pedido:</span>
+                        <span id="calc_subtotal" class="font-mono font-black text-blue-400 text-lg drop-shadow-[0_0_3px_rgba(59,130,246,0.6)]">R$ 0,00</span>
                     </div>
                     
                     <div id="bloco_economia" class="bg-green-950/40 border border-green-800/60 p-3 rounded-lg text-center hidden">
                         <span class="text-xs text-green-400 font-semibold block mb-0.5">🔥 VANTAGEM DE ATACADO</span>
-                        <span id="calc_economia_total" class="text-sm font-black text-green-400 tracking-wide">Você economizou R$ 0,00</span>
+                        <span id="calc_economia_total" class="text-sm font-black text-green-400 tracking-wide">Você economiza R$ 0,00</span>
                     </div>
                 </div>
-
             </div>
 
             <div class="p-4 bg-gray-950 border-t border-gray-800 flex flex-col gap-2">
-                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 rounded-xl shadow-[0_0_15px_rgba(22,163,74,0.4)] transition-all text-sm uppercase tracking-wider flex items-center justify-center gap-2">
-                    Confirmar e Adicionar ao WhatsApp
+                <button onclick="enviarPedidoWhatsApp()" id="btn_enviar" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm uppercase tracking-wider flex items-center justify-center gap-2 opacity-50 cursor-not-allowed" disabled>
+                    Selecione ao menos 1 peça
                 </button>
                 <button onclick="fecharModal()" class="w-full bg-black hover:bg-gray-900 text-white border border-gray-700 py-2.5 rounded-lg font-bold text-xs transition-colors">
                     Continuar Navegando
                 </button>
             </div>
-
         </div>
     </div>
+
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #111827; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #374151; border-radius: 10px; }
+    </style>
 
     <script>
         let produtosCatalogo = [];
         let configAtacado = {};
         let produtoAtivo = null;
-        let quantidadeAtiva = 1;
+        
+        // Os tamanhos oficiais do projeto
+        const gradeTamanhos = ['P', 'M', 'G', 'GG', '2XL', '3XL', '4XL'];
+        
+        // Objeto para guardar as quantidades escolhidas no modal
+        let selecaoAtual = {};
 
         async function inicializarApp() {
             try {
@@ -136,17 +137,19 @@
 
             produtosCatalogo.forEach(p => {
                 const precoBase = p.precosAtacado && p.precosAtacado.drop ? p.precosAtacado.drop.toFixed(2) : '0.00';
+                const categoriaTexto = p.categoria ? p.categoria.toUpperCase() : 'GERAL';
                 
                 const card = document.createElement('div');
-                // Hover neon azul no cartão
-                card.className = "bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-xl flex flex-col hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-200 group";
+                card.className = "bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-xl flex flex-col hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all duration-200 group";
                 card.innerHTML = `
                     <div class="relative pb-[100%] bg-white overflow-hidden border-b border-gray-800">
                         <img src="${p.img}" alt="${p.nome}" class="absolute top-0 left-0 w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-200" loading="lazy">
                         ${p.esgotado ? '<div class="absolute inset-0 bg-black/70 flex items-center justify-center"><span class="bg-red-600 text-white text-xs px-3 py-1.5 font-bold rounded shadow-lg transform -rotate-6">SEM ESTOQUE</span></div>' : ''}
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
-                        <span class="text-[9px] bg-blue-900/30 text-blue-400 border border-blue-500/30 font-bold px-2 py-0.5 rounded tracking-wider uppercase mb-2 w-max">${p.categoria}</span>
+                        <span class="text-[10px] bg-blue-500 text-black font-black px-2.5 py-0.5 rounded tracking-widest uppercase mb-2 w-max shadow-sm">
+                            ${categoriaTexto}
+                        </span>
                         <h3 class="text-xs md:text-sm font-bold text-gray-200 leading-snug mb-3 line-clamp-2 flex-grow">${p.nome}</h3>
                         <div class="mt-auto pt-2 border-t border-gray-800">
                             <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">A partir de</p>
@@ -165,13 +168,14 @@
             produtoAtivo = produtosCatalogo.find(item => item.id === id);
             if (!produtoAtivo) return;
 
-            quantidadeAtiva = 1;
-            document.getElementById('input_qtd').value = 1;
+            // Zera a seleção
+            gradeTamanhos.forEach(t => selecaoAtual[t] = 0);
 
             document.getElementById('modal_img').src = produtoAtivo.img;
-            document.getElementById('modal_categoria').innerText = produtoAtivo.categoria;
+            document.getElementById('modal_categoria').innerText = produtoAtivo.categoria || 'GERAL';
             document.getElementById('modal_nome').innerText = produtoAtivo.nome;
 
+            renderizarControlesTamanhos();
             calcularValoresAtuais();
 
             const modal = document.getElementById('modal_produto');
@@ -180,27 +184,39 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function fecharModal() {
-            const modal = document.getElementById('modal_produto');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = 'auto';
+        function renderizarControlesTamanhos() {
+            const container = document.getElementById('container_tamanhos');
+            container.innerHTML = '';
+
+            // Renderiza um controle para cada tamanho da nossa grade
+            gradeTamanhos.forEach(tamanho => {
+                const div = document.createElement('div');
+                div.className = "flex justify-between items-center bg-gray-900 border border-gray-700 p-2 rounded-lg";
+                div.innerHTML = `
+                    <span class="text-white font-bold text-sm w-10">${tamanho}</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="alterarQtdTamanho('${tamanho}', -1)" class="w-7 h-7 bg-gray-800 hover:bg-gray-700 text-white rounded font-bold flex items-center justify-center transition-colors">-</button>
+                        <span id="qtd_${tamanho}" class="w-6 text-center text-sm font-mono font-bold text-blue-400">${selecaoAtual[tamanho]}</span>
+                        <button onclick="alterarQtdTamanho('${tamanho}', 1)" class="w-7 h-7 bg-gray-800 hover:bg-gray-700 text-white rounded font-bold flex items-center justify-center transition-colors">+</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
         }
 
-        function alterarQuantidade(fator) {
-            let novaQtd = quantidadeAtiva + fator;
-            if (novaQtd < 1) novaQtd = 1;
-            quantidadeAtiva = novaQtd;
-            document.getElementById('input_qtd').value = quantidadeAtiva;
+        function alterarQtdTamanho(tamanho, fator) {
+            let novaQtd = selecaoAtual[tamanho] + fator;
+            if (novaQtd < 0) novaQtd = 0;
+            
+            // Aqui, no futuro, podemos adicionar a trava de "Esgotado" lendo produtoAtivo.estoque[tamanho]
+            
+            selecaoAtual[tamanho] = novaQtd;
+            document.getElementById(`qtd_${tamanho}`).innerText = selecaoAtual[tamanho];
             calcularValoresAtuais();
         }
 
-        function validarEAtualizarQtd() {
-            let val = parseInt(document.getElementById('input_qtd').value);
-            if (isNaN(val) || val < 1) val = 1;
-            quantidadeAtiva = val;
-            document.getElementById('input_qtd').value = quantidadeAtiva;
-            calcularValoresAtuais();
+        function obterTotalPecas() {
+            return Object.values(selecaoAtual).reduce((acc, curr) => acc + curr, 0);
         }
 
         function obterChaveFaixa(qtd) {
@@ -215,14 +231,36 @@
         function calcularValoresAtuais() {
             if (!produtoAtivo) return;
 
-            const chaveFaixa = obterChaveFaixa(quantidadeAtiva);
+            const totalPecas = obterTotalPecas();
+            document.getElementById('lbl_total_pecas').innerText = totalPecas;
+
+            const btnEnviar = document.getElementById('btn_enviar');
+            if (totalPecas > 0) {
+                btnEnviar.disabled = false;
+                btnEnviar.classList.remove('opacity-50', 'cursor-not-allowed');
+                btnEnviar.innerText = "Confirmar e Enviar Pedido";
+            } else {
+                btnEnviar.disabled = true;
+                btnEnviar.classList.add('opacity-50', 'cursor-not-allowed');
+                btnEnviar.innerText = "Selecione ao menos 1 peça";
+            }
+
+            // Se for zero, reseta visuais e para por aqui
+            if (totalPecas === 0) {
+                document.getElementById('calc_preco_unitario').innerText = `R$ 0,00`;
+                document.getElementById('calc_subtotal').innerText = `R$ 0,00`;
+                document.getElementById('bloco_economia').classList.add('hidden');
+                return;
+            }
+
+            const chaveFaixa = obterChaveFaixa(totalPecas);
             const precos = produtoAtivo.precosAtacado || {};
             
             const precoUnitario = precos[chaveFaixa] || precos['drop'] || produtoAtivo.custo;
             const precoDropUnitario = precos['drop'] || precoUnitario;
 
-            const subtotal = precoUnitario * quantidadeAtiva;
-            const subtotalNoDrop = precoDropUnitario * quantidadeAtiva;
+            const subtotal = precoUnitario * totalPecas;
+            const subtotalNoDrop = precoDropUnitario * totalPecas;
             const economiaTotal = subtotalNoDrop - subtotal;
 
             document.getElementById('calc_preco_unitario').innerText = `R$ ${precoUnitario.toFixed(2)}`;
@@ -231,30 +269,46 @@
             const blocoEconomia = document.getElementById('bloco_economia');
             if (economiaTotal > 0) {
                 blocoEconomia.classList.remove('hidden');
-                document.getElementById('calc_economia_total').innerText = `Você economizou R$ ${economiaTotal.toFixed(2)}`;
+                document.getElementById('calc_economia_total').innerText = `Você economiza R$ ${economiaTotal.toFixed(2)}`;
             } else {
                 blocoEconomia.classList.add('hidden');
             }
         }
 
         function enviarPedidoWhatsApp() {
-            if (!produtoAtivo) return;
+            const totalPecas = obterTotalPecas();
+            if (!produtoAtivo || totalPecas === 0) return;
 
-            const chaveFaixa = obterChaveFaixa(quantidadeAtiva);
+            const chaveFaixa = obterChaveFaixa(totalPecas);
             const precoUnitario = produtoAtivo.precosAtacado[chaveFaixa] || produtoAtivo.precosAtacado['drop'];
-            const total = precoUnitario * quantidadeAtiva;
+            const total = precoUnitario * totalPecas;
+
+            // Constrói a lista detalhada de tamanhos selecionados
+            let detalhesTamanhos = "";
+            gradeTamanhos.forEach(t => {
+                if(selecaoAtual[t] > 0) {
+                    detalhesTamanhos += `- ${selecaoAtual[t]}x Tamanho ${t}\n`;
+                }
+            });
 
             const mensagem = `Olá, gostaria de fazer um pedido!\n\n` +
                              `*Produto:* ${produtoAtivo.nome}\n` +
-                             `*Categoria:* ${produtoAtivo.categoria}\n` +
-                             `*Quantidade:* ${quantidadeAtiva} peça(s)\n` +
-                             `*Preço Unitário:* R$ ${precoUnitario.toFixed(2)}\n` +
-                             `*Valor Total:* R$ ${total.toFixed(2)}\n\n` +
-                             `_Obs: Desejo combinar os tamanhos/modelos para mesclar as peças no chat._`;
+                             `*Categoria:* ${produtoAtivo.categoria}\n\n` +
+                             `*Grade Escolhida:*\n${detalhesTamanhos}\n` +
+                             `*Total de Peças:* ${totalPecas}\n` +
+                             `*Preço Unitário na Faixa:* R$ ${precoUnitario.toFixed(2)}\n` +
+                             `*Valor Total:* R$ ${total.toFixed(2)}`;
 
             const adminPhone = configAtacado.whatsappAdmin || "5511915184857";
             const urlWa = `https://wa.me/${adminPhone}?text=${encodeURIComponent(mensagem)}`;
             window.open(urlWa, '_blank');
+        }
+
+        function fecharModal() {
+            const modal = document.getElementById('modal_produto');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
         }
 
         window.onload = inicializarApp;
