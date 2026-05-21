@@ -117,17 +117,30 @@
         // Objeto para guardar as quantidades escolhidas no modal
         let selecaoAtual = {};
 
-        async function inicializarApp() {
-            try {
-                const res = await fetch('/api/dados');
-                const dados = await res.json();
-                produtosCatalogo = dados.produtos.filter(p => p.status === "ativo");
-                configAtacado = dados.config;
-                renderizarGrid();
-            } catch (erro) {
-                console.error("Erro ao carregar dados:", erro);
-                document.getElementById('grid_produtos').innerHTML = `<p class="col-span-full text-center text-red-400">Falha ao conectar ao servidor.</p>`;
-            }
+        async function renderizarControlesTamanhos() {
+            const container = document.getElementById('container_tamanhos');
+            container.innerHTML = '';
+
+            gradeTamanhos.forEach(tamanho => {
+                // Verifica se o estoque desse tamanho é exatamente 0
+                const estaEsgotado = produtoAtivo.estoque && produtoAtivo.estoque[tamanho] === 0;
+                
+                // Classes de estilo condicional
+                const classeEsgotado = estaEsgotado ? "opacity-30 grayscale" : "";
+                
+                const div = document.createElement('div');
+                div.className = `flex justify-between items-center bg-gray-900 border border-gray-700 p-2 rounded-lg ${classeEsgotado}`;
+                
+                div.innerHTML = `
+                    <span class="text-white font-bold text-sm w-10">${tamanho}</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="alterarQtdTamanho('${tamanho}', -1)" class="w-7 h-7 bg-gray-800 hover:bg-gray-700 text-white rounded font-bold flex items-center justify-center transition-colors">-</button>
+                        <span id="qtd_${tamanho}" class="w-6 text-center text-sm font-mono font-bold text-blue-400">${selecaoAtual[tamanho]}</span>
+                        <button onclick="alterarQtdTamanho('${tamanho}', 1)" ${estaEsgotado ? 'disabled' : ''} class="w-7 h-7 bg-gray-800 hover:bg-gray-700 text-white rounded font-bold flex items-center justify-center transition-colors ${estaEsgotado ? 'cursor-not-allowed' : ''}">+</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
         }
 
         function renderizarGrid() {
@@ -207,16 +220,19 @@
         function alterarQtdTamanho(tamanho, fator) {
             let novaQtd = selecaoAtual[tamanho] + fator;
             if (novaQtd < 0) novaQtd = 0;
-            
-            // Aqui, no futuro, podemos adicionar a trava de "Esgotado" lendo produtoAtivo.estoque[tamanho]
+
+            // Lógica de Estoque: Se o admin definir estoque no objeto do produto, bloqueia aqui
+            // Exemplo: produtoAtivo.estoque = { 'P': 10, 'M': 0, ... }
+            if (produtoAtivo.estoque && produtoAtivo.estoque[tamanho] !== undefined) {
+                if (novaQtd > produtoAtivo.estoque[tamanho]) {
+                    alert(`Desculpe, temos apenas ${produtoAtivo.estoque[tamanho]} unidades no tamanho ${tamanho} em estoque.`);
+                    return; // Impede o incremento
+                }
+            }
             
             selecaoAtual[tamanho] = novaQtd;
             document.getElementById(`qtd_${tamanho}`).innerText = selecaoAtual[tamanho];
             calcularValoresAtuais();
-        }
-
-        function obterTotalPecas() {
-            return Object.values(selecaoAtual).reduce((acc, curr) => acc + curr, 0);
         }
 
         function obterChaveFaixa(qtd) {
