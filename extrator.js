@@ -3,19 +3,10 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import { exec } from 'child_process'; // <-- ADICIONE ESTA LINHA AQUI
+import { exec } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-// ... resto do código
-
-const browser = await puppeteer.launch({
-    args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage' // Ajuda a não estourar a memória do plano gratuito
-    ]
-});
 
 const PORT = process.env.PORT || 3000;
 const BANCO_PATH = path.join(__dirname, 'banco_produtos.json');
@@ -23,7 +14,8 @@ const CONFIG_PATH = path.join(__dirname, 'config_atacado.json');
 
 const app = express();
 app.use(express.json());
-// Forçar a entrega dos arquivos HTML lendo a pasta 'public'
+
+// Forçar a entrega dos ficheiros HTML lendo a pasta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
@@ -34,6 +26,11 @@ app.get('/painel-admin.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'painel-admin.html'));
 });
 
+// Permite que o HTML aceda ao banco de produtos que está na raiz
+app.get('/banco_produtos.json', (req, res) => {
+    res.sendFile(BANCO_PATH);
+});
+
 // Permitir requisições de páginas locais ou domínios externos (CORS)
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -42,7 +39,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Inicialização segura dos arquivos de persistência
+// Inicialização segura dos ficheiros de persistência
 if (!fs.existsSync(BANCO_PATH)) fs.writeFileSync(BANCO_PATH, JSON.stringify([], null, 2));
 if (!fs.existsSync(CONFIG_PATH)) {
     const configInicial = {
@@ -64,12 +61,11 @@ if (!fs.existsSync(CONFIG_PATH)) {
     fs.writeFileSync(CONFIG_PATH, JSON.stringify(configInicial, null, 2));
 }
 
-// Interceptador global de falhas assíncronas para evitar quedas do servidor
 process.on('unhandledRejection', (reason) => {
     console.error('⚠️ [PREVENÇÃO CRÍTICA] Evitada queda por rejeição assíncrona:', reason);
 });
 
-// Função auxiliar para calcular preços ajustados com base nas faixas de lucro
+// Função auxiliar para calcular preços ajustados
 function calcularPrecosAjustados(custoCof, config) {
     const precos = {};
     if (!config.lucro || !config.lucro.faixas) return precos;
@@ -84,17 +80,17 @@ function sincronizarRepositorio() {
     console.log('📦 [GIT] Iniciando sincronização do banco de dados...');
     exec('git add banco_produtos.json config_atacado.json && git commit -m "Mapeamento e Ajustes de Catálogo Automático" && git push origin main', (err) => {
         if (err) {
-            console.log('ℹ️ [GIT] Modificações salvas localmente com sucesso.');
+            console.log('ℹ️ [GIT] Modificações guardadas localmente com sucesso.');
         } else {
             console.log('🚀 [GITHUB] Repositório sincronizado globalmente na nuvem!');
         }
     });
 }
 
-// 🤖 CORE DO ROBÔ: Varredura de Alta Performance e Resiliência
-async function executarVarreduraResiliente() {
+// 🤖 CORE DO ROBÔ: Extração Cirúrgica (Sob Demanda com Categoria Forçada)
+async function extrairCategoriaEspecifica(urlAlvo, categoriaManual) {
     const config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
-    console.log(`⏳ [MONITOR] Iniciando varredura em: ${config.urlFornecedor}`);
+    console.log(`🎯 [ON-DEMAND] Extração na URL: ${urlAlvo} | Categoria: ${categoriaManual}`);
     
     let browser;
     try {
@@ -108,7 +104,6 @@ async function executarVarreduraResiliente() {
         const page = await browser.newPage();
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36');
         
-        // Otimização Estrutural: Cancela o download visual mas retém os atributos de texto/imagem do HTML
         await page.setRequestInterception(true);
         page.on('request', (req) => {
             if (['image', 'stylesheet', 'font', 'media', 'analytics'].includes(req.resourceType())) {
@@ -118,121 +113,81 @@ async function executarVarreduraResiliente() {
             }
         });
 
-        // Alvo principal - Evita travar por conexões pendentes de rastreadores externos
-        try {
-            await page.goto(config.urlFornecedor, { waitUntil: 'domcontentloaded', timeout: 25000 });
-        } catch (e) {
-            console.log('⚠️ [AVISO] Tempo limite de carregamento da Home atingido, processando dados parciais estruturados...');
-        }
+        await page.goto(urlAlvo, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        
+        const rawProdutos = await page.evaluate(() => {
+            const extraidos = [];
+            const seletoresCartao = document.querySelectorAll('.product-item, .produto, .card, [class*="product"], [class*="produto"], li');
+            
+            seletoresCartao.forEach(card => {
+                const linkEl = card.querySelector('a');
+                if (!linkEl) return;
 
-        // Descobre dinamicamente os links de categorias/coleções do menu
-        const linksAlvo = await page.evaluate((baseUrl) => {
-            const indesejados = ['/carrinho', '/checkout', '/conta', '/login', '/cadastro', '/contato', 'whats', 'instagram'];
-            return Array.from(document.querySelectorAll('a'))
-                .map(a => a.href)
-                .filter(href => href && href.startsWith(baseUrl))
-                .filter(href => !indesejados.some(termo => href.toLowerCase().includes(termo)));
-        }, config.urlFornecedor);
-
-        const rotasExclusivas = [...new Set(linksAlvo)].slice(0, 35);
-        console.log(`🎯 [MAPEAMENTO] Identificadas ${rotasExclusivas.length} rotas estáveis para mineração de dados.`);
-
-        for (const rota of rotasExclusivas) {
-            try {
-                await page.goto(rota, { waitUntil: 'domcontentloaded', timeout: 15000 });
+                const nome = card.querySelector('h1, h2, h3, .title, .name, [class*="name"], [class*="titulo"]')?.innerText?.trim();
+                let precoRaw = card.querySelector('.price, .preco, [class*="price"], [class*="preco"]')?.innerText?.trim();
                 
-                const rawProdutos = await page.evaluate(() => {
-                    const extraidos = [];
-                    const seletoresCartao = document.querySelectorAll('.product-item, .produto, .card, [class*="product"], [class*="produto"], li');
-                    
-                    seletoresCartao.forEach(card => {
-                        const linkEl = card.querySelector('a');
-                        if (!linkEl) return;
-
-                        const nome = card.querySelector('h1, h2, h3, .title, .name, [class*="name"], [class*="titulo"]')?.innerText?.trim();
-                        
-                        // Captura inteligível de preços contendo R$
-                        let precoRaw = card.querySelector('.price, .preco, [class*="price"], [class*="preco"]')?.innerText?.trim();
-                        if (!precoRaw || !precoRaw.includes('R$')) {
-                            const todosFilhos = card.querySelectorAll('*');
-                            for (let filho of todosFilhos) {
-                                if (filho.children.length === 0 && filho.innerText?.includes('R$')) {
-                                    precoRaw = filho.innerText.trim();
-                                    break;
-                                }
-                            }
+                if (!precoRaw || !precoRaw.includes('R$')) {
+                    const todosFilhos = card.querySelectorAll('*');
+                    for (let filho of todosFilhos) {
+                        if (filho.children.length === 0 && filho.innerText?.includes('R$')) {
+                            precoRaw = filho.innerText.trim();
+                            break;
                         }
-
-                        // Mineração profunda de links de imagens na nuvem (previne Lazy Loading)
-                        const imgEl = card.querySelector('img');
-                        let imgUrl = '';
-                        if (imgEl) {
-                            imgUrl = imgEl.getAttribute('data-src') || 
-                                     imgEl.getAttribute('data-lazy-src') || 
-                                     imgEl.getAttribute('data-original') || 
-                                     imgEl.src || '';
-                        }
-
-                        const textoInterno = card.innerText?.toLowerCase() || '';
-                        const esgotado = textoInterno.includes('esgotado') || textoInterno.includes('sem estoque');
-
-                        if (nome && precoRaw && nome.length > 4) {
-                            extraidos.push({ nome, precoRaw, imgUrl, esgotado });
-                        }
-                    });
-                    return extraidos;
-                });
-
-                // Tratamento e higienização dos dados extraídos
-                rawProdutos.forEach(prod => {
-                    // Sanitização do preço string para Float numérico puro
-                    const precoNumerico = parseFloat(prod.precoRaw.replace(/[^\d,.]/g, '').replace('.', '').replace(',', '.'));
-                    if (isNaN(precoNumerico) || precoNumerico <= 0) return;
-
-                    const idUnico = Buffer.from(prod.nome).toString('base64').substring(0, 12);
-                    const indiceExistente = banco.findIndex(p => p.id === idUnico);
-
-                    // Categorização Automática de Retaguarda
-                    let categoria = "Camisas de Time";
-                    const min = prod.nome.toLowerCase();
-                    if (min.includes('corta vento') || min.includes('jaqueta')) categoria = "Corta-Ventos";
-                    if (min.includes('infantil') || min.includes('kit')) categoria = "Kits Infantis";
-                    if (min.includes('feminina') || min.includes('fem')) categoria = "Modelos Femininos";
-                    if (min.includes('polo') || min.includes('casual')) categoria = "Polos / Casuais";
-
-                    const precosAtacadoCalculados = calcularPrecosAjustados(precoNumerico, config);
-
-                    if (indiceExistente === -1) {
-                        // Inserção de novo produto mapeado
-                        banco.push({
-                            id: idUnico,
-                            nome: prod.nome,
-                            img: prod.imgUrl || 'https://via.placeholder.com/400x500?text=Imagem+Nuvem',
-                            custo: precoNumerico,
-                            precosAtacado: precosAtacadoCalculados,
-                            categoria: categoria,
-                            esgotado: prod.esgotado,
-                            status: "ativo"
-                        });
-                    } else {
-                        // Atualiza dinamicamente mantendo customizações manuais se necessário
-                        banco[indiceExistente].custo = precoNumerico;
-                        banco[indiceExistente].precosAtacado = precosAtacadoCalculados;
-                        banco[indiceExistente].esgotado = prod.esgotado;
                     }
-                });
+                }
 
-            } catch (errLinha) {
-                // Rota individual instável não derruba o processamento do resto do catálogo
+                const imgEl = card.querySelector('img');
+                let imgUrl = '';
+                if (imgEl) {
+                    imgUrl = imgEl.getAttribute('data-src') || imgEl.getAttribute('data-lazy-src') || imgEl.getAttribute('data-original') || imgEl.src || '';
+                }
+
+                const textoInterno = card.innerText?.toLowerCase() || '';
+                const esgotado = textoInterno.includes('esgotado') || textoInterno.includes('sem estoque');
+
+                if (nome && precoRaw && nome.length > 4) {
+                    extraidos.push({ nome, precoRaw, imgUrl, esgotado });
+                }
+            });
+            return extraidos;
+        });
+
+        let novosAdicionados = 0;
+        rawProdutos.forEach(prod => {
+            const precoNumerico = parseFloat(prod.precoRaw.replace(/[^\d,.]/g, '').replace('.', '').replace(',', '.'));
+            if (isNaN(precoNumerico) || precoNumerico <= 0) return;
+
+            const idUnico = Buffer.from(prod.nome).toString('base64').substring(0, 12);
+            const indiceExistente = banco.findIndex(p => p.id === idUnico);
+
+            const precosAtacadoCalculados = calcularPrecosAjustados(precoNumerico, config);
+
+            // Usa a categoria que o utilizador selecionou no painel!
+            const categoriaFinal = categoriaManual || "Outros";
+
+            if (indiceExistente === -1) {
+                novosAdicionados++;
+                banco.push({
+                    id: idUnico, nome: prod.nome, img: prod.imgUrl || 'https://via.placeholder.com/400x500?text=Imagem+Sem+Foto',
+                    custo: precoNumerico, precosAtacado: precosAtacadoCalculados, categoria: categoriaFinal, esgotado: prod.esgotado, status: "ativo"
+                });
+            } else {
+                banco[indiceExistente].custo = precoNumerico;
+                banco[indiceExistente].precosAtacado = precosAtacadoCalculados;
+                banco[indiceExistente].esgotado = prod.esgotado;
+                banco[indiceExistente].categoria = categoriaFinal; // Atualiza se necessário
             }
-        }
+        });
 
         fs.writeFileSync(BANCO_PATH, JSON.stringify(banco, null, 2));
-        console.log(`✅ [SUCESSO] Varredura finalizada. Total em base: ${banco.length} itens.`);
+        console.log(`✅ [SUCESSO] ${novosAdicionados} produtos inseridos na categoria: ${categoriaManual}.`);
         sincronizarRepositorio();
+        
+        return { success: true, adicionados: novosAdicionados };
 
-    } catch ( erroGlobal ) {
-        console.error('❌ Erro crítico no processo do robô:', erroGlobal);
+    } catch (erro) {
+        console.error('❌ Erro na extração:', erro);
+        return { success: false, error: erro.message };
     } finally {
         if (browser) await browser.close();
     }
@@ -245,29 +200,34 @@ app.get('/api/dados', (req, res) => {
     res.json({ produtos, config });
 });
 
-// Rota para salvar alterações gerais ou novos produtos criados manualmente
 app.post('/api/salvar', (req, res) => {
     try {
         const { produtos, config } = req.body;
         if (produtos) fs.writeFileSync(BANCO_PATH, JSON.stringify(produtos, null, 2));
         if (config) fs.writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2));
         sincronizarRepositorio();
-        res.json({ success: true, message: "Dados persistidos com sucesso global!" });
+        res.json({ success: true, message: "Dados guardados com sucesso!" });
     } catch (err) {
-        res.status(500).json({ error: "Falha ao gravar arquivos de dados." });
+        res.status(500).json({ error: "Falha ao gravar os ficheiros." });
     }
 });
 
-// Rota de trigger manual para o robô via interface administrativa
-app.post('/api/varrer', (req, res) => {
-    executarVarreduraResiliente();
-    res.json({ success: true, message: "Varredura iniciada em segundo plano!" });
+// 🌐 ROTA NOVA: Recebe o link e a categoria escolhida no painel
+app.post('/api/extrair-url', async (req, res) => {
+    const { url, categoria } = req.body;
+    if (!url) return res.status(400).json({ success: false, error: "URL não fornecida" });
+    if (!categoria) return res.status(400).json({ success: false, error: "Categoria não selecionada" });
+    
+    const resultado = await extrairCategoriaEspecifica(url, categoria);
+    if (resultado.success) {
+        res.json({ success: true, message: `Extração concluída! ${resultado.adicionados} itens adicionados/atualizados em "${categoria}".` });
+    } else {
+        res.status(500).json({ success: false, error: resultado.error });
+    }
 });
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`===========================================================`);
     console.log(`⚡ API ENDPOINTS DO CATÁLOGO ATIVOS NA PORTA DE REDE: ${PORT}`);
     console.log(`===========================================================`);
-    console.log(`🤖 O Robô está em repouso. Inicie a varredura pela rota /api/varrer quando quiser.`);
-    // A função executarVarreduraResiliente() foi removida daqui para não travar a memória!
 });
