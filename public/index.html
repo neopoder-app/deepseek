@@ -3,109 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEOPODER.SHOP - Atacado e Dropshipping</title>
-    <style>
-        /* ESTILOS BÁSICOS (CSS EMBUTIDO PARA FACILITAR) */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        body { background-color: #f4f4f4; color: #333; }
-        
-        /* CABEÇALHO */
-        header { 
-            background-color: #000000; /* Forçado preto absoluto para a logo */
-            padding: 20px; 
-            text-align: center; 
-            color: white; 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            /* --- LINHA NEON ADICIONADA --- */
-            border-bottom: 3px solid #00d2ff;
-            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.4);
-        }
-        /* --- LOGO AJUSTADA --- */
-        .logo-container img { 
-            max-height: 90px; 
-            mix-blend-mode: screen; /* Remove fundo preto da imagem */
-        }
-        
-        .menu { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .menu a { color: white; text-decoration: none; font-weight: bold; cursor: pointer; padding: 5px 10px; border-radius: 5px; }
-        .menu a:hover { background-color: #333; }
-        .cart-icon { background-color: #25D366; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; color: black; }
-
-        /* --- BANNER ADICIONADO --- */
-        .banner-destaque { width: 100%; margin-bottom: 20px; }
-        .banner-destaque img { width: 100%; max-height: 350px; object-fit: cover; display: block; }
-
-        /* GRADE DE PRODUTOS */
-        .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
-        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .produto-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
-        .produto-card img { max-width: 100%; border-radius: 5px; }
-        .produto-card h3 { font-size: 16px; margin: 10px 0; }
-        .preco-destaque { font-size: 20px; font-weight: bold; color: #d9534f; margin-bottom: 10px; }
-        .btn-comprar { background-color: #111; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .btn-comprar:hover { background-color: #333; }
-
-        /* CARRINHO LATERAL */
-        .carrinho-lateral { position: fixed; top: 0; right: -400px; width: 350px; height: 100%; background: white; box-shadow: -2px 0 5px rgba(0,0,0,0.2); transition: 0.3s; z-index: 200; display: flex; flex-direction: column; }
-        .carrinho-lateral.aberto { right: 0; }
-        .carrinho-header { background: #111; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .fechar-carrinho { cursor: pointer; font-size: 20px; font-weight: bold; }
-        .carrinho-itens { flex: 1; overflow-y: auto; padding: 15px; }
-        .item-carrinho { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; align-items: center; }
-        .carrinho-footer { padding: 15px; background: #f9f9f9; border-top: 1px solid #ddd; }
-        .btn-whatsapp { background-color: #25D366; color: white; text-align: center; display: block; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 10px; }
-        .info-tier { font-size: 12px; color: #555; margin-bottom: 10px; background: #fff3cd; padding: 10px; border-radius: 5px; border: 1px solid #ffeeba;}
-    </style>
+    <title>Catálogo - NEOPODER.SHOP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-950 text-gray-100 font-sans pb-20">
 
-    <header>
-        <div class="logo-container">
-            <img src="NEOPODER.SHOP.png" alt="NEOPODER.SHOP">
-        </div>
-        <nav class="menu">
-            <a onclick="filtrar('Todas')">Todas</a>
-            <a onclick="filtrar('Camisas de Time')">Camisas de Time</a>
-            <a onclick="filtrar('Kits Infantis')">Kits Infantis</a>
-            <a onclick="filtrar('Modelos Femininos')">Modelos Femininos</a>
-            <a onclick="filtrar('Chuteiras')">Chuteiras</a>
-            <a onclick="filtrar('Camisas Retrô')">Camisas Retrô</a>
-        </nav>
-        <div class="cart-icon" onclick="toggleCarrinho()">
-            🛒 Carrinho (<span id="contador-carrinho">0</span>)
+    <header class="bg-blue-900 p-4 shadow-xl border-b border-yellow-500 sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="h-16 md:h-24 flex items-center justify-center font-black text-2xl md:text-3xl text-yellow-400 tracking-wide">
+                    NEOPODER.SHOP
+                </div>
+            </div>
+            <a href="https://wa.me/5511915184857" target="_blank" class="bg-green-600 hover:bg-green-500 text-white text-xs md:text-sm px-4 py-2 rounded-full font-bold transition-colors shadow-lg flex items-center gap-2">
+                <span>Dúvidas? WhatsApp</span>
+            </a>
         </div>
     </header>
 
-    <section class="banner-destaque">
-        <img src="https://via.placeholder.com/1200x350/111111/00d2ff?text=COLOQUE+SEU+BANNER+AQUI" alt="Banner Principal da Loja">
+    <section class="w-full bg-gray-900 border-b border-gray-800">
+        
+        <div class="hidden md:block w-full">
+            <img src="https://via.placeholder.com/1920x500?text=BANNER+DESKTOP+(1920x500)" alt="Banner Ofertas Desktop" class="w-full h-auto object-cover">
+        </div>
+
+        <div class="block md:hidden w-full">
+            <img src="https://via.placeholder.com/1080x1080?text=BANNER+MOBILE+(1080x1080)" alt="Banner Ofertas Mobile" class="w-full h-auto object-cover">
+        </div>
+
     </section>
+    <main class="max-w-6xl mx-auto p-4 mt-4">
+        <div class="flex justify-between items-end mb-6">
+            <h2 class="text-xl md:text-2xl font-bold text-gray-200 border-l-4 border-yellow-500 pl-3">Lançamentos & Ofertas</h2>
+            <span id="contador_produtos" class="text-xs font-mono text-gray-400 bg-gray-800 px-2 py-1 rounded">Carregando...</span>
+        </div>
 
-    <div class="container">
-        <div class="grid-produtos" id="grid-produtos">
+        <div id="grid_produtos" class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             </div>
+    </main>
+
+    <div id="modal_produto" class="fixed inset-0 bg-black/80 z-50 hidden flex-col justify-end md:justify-center items-center">
+        
+        <div class="bg-gray-900 w-full md:w-[500px] max-h-[90vh] md:max-h-[85vh] rounded-t-2xl md:rounded-2xl border border-gray-700 shadow-2xl flex flex-col relative overflow-hidden">
+            
+            <button onclick="fecharModal()" class="absolute top-3 right-3 bg-red-600 hover:bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg z-10 shadow">
+                &times;
+            </button>
+
+            <div id="conteudo_modal" class="p-5 overflow-y-auto custom-scrollbar">
+                </div>
+
+            <div class="p-4 bg-gray-950 border-t border-gray-800">
+                <button onclick="fecharModal()" class="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-lg font-bold text-sm transition-colors">
+                    Voltar ao Catálogo
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="carrinho-lateral" id="carrinho-lateral">
-        <div class="carrinho-header">
-            <h2>Seu Pedido</h2>
-            <span class="fechar-carrinho" onclick="toggleCarrinho()">X</span>
-        </div>
-        <div class="carrinho-itens" id="carrinho-itens">
-            </div>
-        <div class="carrinho-footer">
-            <div class="info-tier" id="info-tier">
-                Modalidade atual: <strong>Calculando...</strong>
-            </div>
-            <h3>Total: R$ <span id="total-carrinho">0,00</span></h3>
-            <a href="#" class="btn-whatsapp" id="btn-whatsapp" onclick="finalizarPedido()">📲 Enviar Pedido via WhatsApp</a>
-        </div>
-    </div>
+    <script>
+        let produtosCatalogo = [];
 
-    <script src="script.js"></script>
+        async function carregarProdutos() {
+            try {
+                // Tenta puxar da API (que contém os produtos mais atualizados)
+                const res = await fetch('/api/dados');
+                const dados = await res.json();
+                produtosCatalogo = dados.produtos.filter(p => p.status === "ativo");
+                renderizarGrid();
+            } catch (erro) {
+                console.error("Erro ao carregar catálogo:", erro);
+                document.getElementById('grid_produtos').innerHTML = `<p class="col-span-full text-center text-red-400">Falha ao carregar os produtos. Atualize a página.</p>`;
+            }
+        }
+
+        function renderizarGrid() {
+            const grid = document.getElementById('grid_produtos');
+            const contador = document.getElementById('contador_produtos');
+            grid.innerHTML = '';
+            
+            contador.innerText = `${produtosCatalogo.length} itens`;
+
+            produtosCatalogo.forEach(p => {
+                const precoDrop = p.precosAtacado && p.precosAtacado.drop ? p.precosAtacado.drop.toFixed(2) : '0.00';
+                
+                const card = document.createElement('div');
+                card.className = "bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow flex flex-col hover:border-yellow-500 transition-colors";
+                card.innerHTML = `
+                    <div class="relative pb-[100%] bg-white">
+                        <img src="${p.img}" alt="${p.nome}" class="absolute top-0 left-0 w-full h-full object-contain p-2" loading="lazy">
+                        ${p.esgotado ? '<div class="absolute inset-0 bg-black/60 flex items-center justify-center"><span class="bg-red-600 text-white px-3 py-1 font-bold rounded transform -rotate-12">ESGOTADO</span></div>' : ''}
+                    </div>
+                    <div class="p-3 flex flex-col flex-grow">
+                        <span class="text-[10px] text-gray-400 uppercase font-bold tracking-wider mb-1">${p.categoria}</span>
+                        <h3 class="text-xs md:text-sm font-semibold text-white leading-tight mb-2 flex-grow">${p.nome}</h3>
+                        <div class="mt-auto">
+                            <p class="text-[10px] text-gray-400 mb-1">A partir de (Atacado)</p>
+                            <p class="text-lg font-mono font-bold text-green-400">R$ ${precoDrop}</p>
+                        </div>
+                        <button onclick="abrirModal('${p.id}')" class="mt-3 w-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold py-2 rounded transition-colors uppercase tracking-wide">
+                            Ver Preços & Detalhes
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function abrirModal(id) {
+            const p = produtosCatalogo.find(item => item.id === id);
+            if(!p) return;
+
+            const modal = document.getElementById('modal_produto');
+            const conteudo = document.getElementById('conteudo_modal');
+            
+            const precoDrop = p.precosAtacado.drop || 0;
+
+            // Função que gera a linha da tabela de preços e calcula a economia
+            const gerarLinhaPreco = (label, valor) => {
+                if(!valor) return '';
+                const economia = precoDrop - valor;
+                let tagEconomia = '';
+                
+                if (economia > 0) {
+                    tagEconomia = `<span class="bg-green-600 text-white px-2 py-0.5 rounded text-[10px] font-bold ml-2 animate-pulse flex-shrink-0">Economizou R$ ${economia.toFixed(2)} /peça</span>`;
+                }
+
+                return `
+                    <div class="flex flex-wrap justify-between items-center py-2 border-b border-gray-800 last:border-0">
+                        <span class="text-xs font-semibold text-gray-300 w-full sm:w-auto mb-1 sm:mb-0">${label}</span>
+                        <div class="flex items-center text-sm font-mono font-bold text-white">
+                            R$ ${valor.toFixed(2)} ${tagEconomia}
+                        </div>
+                    </div>
+                `;
+            };
+
+            conteudo.innerHTML = `
+                <div class="flex gap-4 mb-4">
+                    <img src="${p.img}" class="w-24 h-24 object-cover rounded bg-white p-1 border border-gray-700">
+                    <div>
+                        <span class="text-[10px] bg-gray-800 text-yellow-400 px-2 py-1 rounded mb-1 inline-block">${p.categoria}</span>
+                        <h2 class="text-sm font-bold text-white leading-tight">${p.nome}</h2>
+                    </div>
+                </div>
+
+                <div class="bg-gray-950 p-3 rounded border border-gray-800">
+                    <h3 class="text-xs text-gray-400 mb-2 uppercase font-bold tracking-widest border-b border-gray-800 pb-2">Tabela de Preços</h3>
+                    ${gerarLinhaPreco('Varejo / Drop (Unitário)', p.precosAtacado.drop)}
+                    ${gerarLinhaPreco('Atacado (3 a 9 peças)', p.precosAtacado.at_3)}
+                    ${gerarLinhaPreco('Atacado (10 a 19 peças)', p.precosAtacado.at_10)}
+                    ${gerarLinhaPreco('Atacado (20 a 49 peças)', p.precosAtacado.at_20)}
+                    ${gerarLinhaPreco('Atacado (50 a 99 peças)', p.precosAtacado.at_50)}
+                    ${gerarLinhaPreco('Atacado (+100 peças)', p.precosAtacado.at_100)}
+                </div>
+                
+                <a href="https://wa.me/5511915184857?text=Olá, quero encomendar o produto: ${encodeURIComponent(p.nome)}" target="_blank" class="mt-4 block w-full bg-green-600 hover:bg-green-500 text-center text-white font-bold py-3 rounded-lg shadow transition-colors">
+                    Fazer Encomenda no WhatsApp
+                </a>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Impede o fundo de rolar
+        }
+
+        function fecharModal() {
+            const modal = document.getElementById('modal_produto');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto'; // Libera o fundo
+        }
+
+        window.onload = carregarProdutos;
+    </script>
 </body>
 </html>
